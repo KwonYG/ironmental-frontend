@@ -2,6 +2,7 @@ import { tags } from '../../api/tags.js';
 
 export const tagModule = {
     state: {
+        value: 'all',
         tags:['all'],
     },
 
@@ -12,6 +13,10 @@ export const tagModule = {
     },
 
     mutations: {
+        UPDATE_VALUE(state, valueData){
+            state.value = valueData;
+        },
+
         SET_TAGS(state, tagDatas){
             state.tags = state.tags.concat(tagDatas);
         }
@@ -26,6 +31,10 @@ export const tagModule = {
                         .catch(err=>{
                             console.log(err);
                         });
+        },
+
+        UPDATE_VALUE_ACTION({ commit }, value){
+            return commit('UPDATE_VALUE', value);
         }
     }
 }

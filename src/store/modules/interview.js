@@ -3,7 +3,7 @@ import { interview } from '../../api/interviews.js';
 export const interviewModule = {
     state: {
         interviewItem: {},
-        interviews: [],
+        interviews: {},
     },
 
     getters: {
@@ -34,7 +34,8 @@ export const interviewModule = {
         FETCH_INTERVIEWS({ commit }) {
             return interview.fetchInterviews()
                 .then(({ data }) => {
-                    commit('SET_INTERVIEWS', data);
+                    console.log(data.datas);
+                    commit('SET_INTERVIEWS', data.datas);
                 })
                 .catch(err => {
                     console.log(err);
@@ -55,8 +56,8 @@ export const interviewModule = {
         FETCH_SPECIFIC_INTERVIEWS({ commit }, { tag }) {
             return interview.fetchSpecificInterviews(tag)
                 .then(({ data }) => {
-                    console.log(`특정 태그! ${tag}: `, data);
-                    commit('SET_INTERVIEWS', data);
+                    console.log(`특정 태그! ${tag}: `, data.datas);
+                    commit('SET_INTERVIEWS', data.datas);
                 })
                 .catch(err => {
                     console.log(err);
