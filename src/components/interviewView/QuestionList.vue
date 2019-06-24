@@ -1,8 +1,8 @@
 <template>
 <div class="question_list_container">
     <drop-down></drop-down>
-    <ul class="question_list">
-        <div v-infinite-scroll="loadMore" infinite-scroll-disabled="busy" infinite-scroll-distance="limit">
+    <ul class="question_list" v-infinite-scroll="loadMore" infinite-scroll-disabled="busy" infinite-scroll-distance="limit">
+        <div>
             <li class="question_item" v-for="interview in interviews" :key=interview._id data-aos="slide-up" data-aos-offset="100" data-aos-easing="ease-out-back">
                 <question-list-item :interview="interview"></question-list-item>
             </li>
@@ -13,6 +13,7 @@
 
 <script>
 import { mapGetters } from 'vuex';
+import infiniteScroll from 'vue-infinite-scroll'
 
 import DropDown from './DropDown.vue';
 import QuestionListItem from './QuestionListItem.vue';
@@ -23,9 +24,20 @@ export default {
         QuestionListItem,
     },
 
+    directives: {
+        infiniteScroll
+    },
+
+    data() {
+        return{
+            posts: [],
+            limit: 4,
+            busy: false
+        }
+    },
+
     created(){
         this.$store.dispatch('FETCH_INTERVIEWS');
-        // window.addEventListener('scroll', this.onScroll);
     },
 
     computed:{
@@ -34,21 +46,15 @@ export default {
             }),
     },
 
-    destroyed() {
-        // window.removeEventListener('scroll', this.onScroll);
-    },
-
     methods:{
-        loadMoreInterviews(){
-
-        },
-
-        // onScroll ({ target: { scrollTop, clientHeight, scrollHeight }}) {
-        //     console.log('감지!')
-        //     if (scrollTop + clientHeight >= scrollHeight) {
-        //         console.log('아래다!')
-        //     }
-        // }
+        loadMore() {
+            console.log("Adding 4 more data results");
+            const nextUrl = this.$store.state.interviewModule.nextUrl;
+            
+            this.busy = true;
+            this.$store.dispatch('FETCH_MORE_INTERVIEWS',nextUrl);
+            this.busy = false;
+        }
     }
 }
 </script>

@@ -39,7 +39,6 @@ export const interviewModule = {
         FETCH_INTERVIEWS({ commit }) {
             return interview.fetchInterviews()
                 .then(({ data }) => {
-                    console.log(data);
                     commit('SET_INTERVIEWS', data.datas);
                     commit('SET_NEXT_URL', data.links.next);
                 })
@@ -75,7 +74,7 @@ export const interviewModule = {
                 .then(({ data }) => {
                     console.log('fetchMore:', data);
                     commit('ADD_MORE_INTERVIEWS', data.datas);
-                    return data;
+                    commit('SET_NEXT_URL', data.links.next);
                 })
                 .catch(err => {
                     console.log(err);

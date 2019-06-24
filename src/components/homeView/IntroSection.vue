@@ -42,7 +42,6 @@
 <script>
 export default {
     name: 'introSection',
-   
 }
 </script>
 

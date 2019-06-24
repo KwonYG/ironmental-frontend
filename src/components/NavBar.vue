@@ -8,7 +8,7 @@
     <mdb-navbar-toggler>
       <mdb-navbar-nav>
         <mdb-nav-item>구독</mdb-nav-item>
-        <mdb-nav-item v-scoll-to="'#intro_section_pos'">소개</mdb-nav-item>
+        <mdb-nav-item>소개</mdb-nav-item>
         <mdb-nav-item to="/interviews">인터뷰</mdb-nav-item>
       </mdb-navbar-nav>
 
