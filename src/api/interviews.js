@@ -16,9 +16,6 @@ function fetchSpecificInterviews(tag){
 }
 
 function fetchMoreInterviews(nextUrl){ // call next by hateoas
-    nextUrl = nextUrl.replace("undefined/interviews",`${baseUrl}`);
-    console.log("in FetchedMore: ",nextUrl);
-
     return axios.get(nextUrl);
 }
 

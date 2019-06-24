@@ -30,7 +30,6 @@ export default {
 
     data() {
         return{
-            posts: [],
             limit: 4,
             busy: false
         }
@@ -48,12 +47,10 @@ export default {
 
     methods:{
         loadMore() {
-            console.log("Adding 4 more data results");
             const nextUrl = this.$store.state.interviewModule.nextUrl;
-            
             this.busy = true;
             this.$store.dispatch('FETCH_MORE_INTERVIEWS',nextUrl);
-            this.busy = false;
+            this.busy = false;        
         }
     }
 }

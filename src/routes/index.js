@@ -5,6 +5,7 @@ import HomeView from '../views/HomeView.vue'
 import InterviewView from '../views/InterviewView.vue'
 import OneInterviewView from '../views/OneInterviewView.vue';
 import ConfirmView from '../views/ConfirmView.vue';
+import ErrorView from '../views/ErrorView.vue';
 
 Vue.use(Router);
 
@@ -32,9 +33,13 @@ export const router = new Router({
             component: OneInterviewView
         },
         {
-            path: '/confirm',
+            path: '/auth/confirm/:confirmCode',
             name: 'confirm',
             component: ConfirmView
+        },{
+            path: '/error',
+            name: 'error',
+            component: ErrorView
         }
     ]
 })

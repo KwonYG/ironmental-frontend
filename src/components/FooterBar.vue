@@ -8,10 +8,10 @@
           <p>Here you can use rows and columns here to organize your footer content.</p>
         </mdb-col>
         <mdb-col sm="6">
-          <h5 class="title">Links</h5>
+          <h5 class="title">Devrother</h5>
           <ul>
-            <li class="list-unstyled"><a href="#!">Link 1</a></li>
-            <li class="list-unstyled"><a href="#!">Link 2</a></li>
+            <li class="list-unstyled"><a href="#!">버그 신고</a></li>
+            <li class="list-unstyled"><a href="#!">이메일</a></li>
             <li class="list-unstyled"><a href="#!">Link 3</a></li>
             <li class="list-unstyled"><a href="#!">Link 4</a></li>
           </ul>
@@ -20,7 +20,7 @@
     </mdb-container>
     <div class="footer-copyright text-center py-3">
       <mdb-container fluid>
-        &copy; 2018 Copyright: <a href="https://www.MDBootstrap.com"> MDBootstrap.com </a>
+        &copy; 2018 Copyright: <a href="https://github.com/Devrother"> Devrother </a>
       </mdb-container>
     </div>
   </mdb-footer>

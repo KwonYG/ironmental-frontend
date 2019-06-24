@@ -62,7 +62,9 @@ export const interviewModule = {
             return interview.fetchSpecificInterviews(tag)
                 .then(({ data }) => {
                     console.log(`특정 태그! ${tag}: `, data.datas);
+                    console.log('특정 태그의 nextUrl: ', data.links.next);
                     commit('SET_INTERVIEWS', data.datas);
+                    commit('SET_NEXT_URL', data.links.next);
                 })
                 .catch(err => {
                     console.log(err);
