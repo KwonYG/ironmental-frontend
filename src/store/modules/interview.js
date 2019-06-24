@@ -4,6 +4,7 @@ export const interviewModule = {
     state: {
         interviewItem: {},
         interviews: {},
+        nextUrl:''
     },
 
     getters: {
@@ -27,6 +28,10 @@ export const interviewModule = {
 
         ADD_MORE_INTERVIEWS(state, interviewDatas) {
             state.interviews = state.interviews.concat(interviewDatas);
+        },
+
+        SET_NEXT_URL(state, url){
+            state.nextUrl = url
         }
     },
 
@@ -34,8 +39,9 @@ export const interviewModule = {
         FETCH_INTERVIEWS({ commit }) {
             return interview.fetchInterviews()
                 .then(({ data }) => {
-                    console.log(data.datas);
+                    console.log(data);
                     commit('SET_INTERVIEWS', data.datas);
+                    commit('SET_NEXT_URL', data.links.next);
                 })
                 .catch(err => {
                     console.log(err);
@@ -64,11 +70,11 @@ export const interviewModule = {
                 });
         },
 
-        FETCH_MORE_INTERVIEWS({ commit }, { tag, offset }) {
-            return interview.fetchMoreInterviews(tag, offset)
+        FETCH_MORE_INTERVIEWS({ commit }, nextUrl) {
+            return interview.fetchMoreInterviews(nextUrl)
                 .then(({ data }) => {
                     console.log('fetchMore:', data);
-                    commit('ADD_MORE_INTERVIEWS', data);
+                    commit('ADD_MORE_INTERVIEWS', data.datas);
                     return data;
                 })
                 .catch(err => {

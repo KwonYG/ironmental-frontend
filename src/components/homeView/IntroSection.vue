@@ -8,7 +8,7 @@
         </p>
     </div>
     <div class="intro_content">
-        <div class="content_item" v-animateOnScroll="{animation: 'fadeIn', delay: 300, position: 20}">
+        <div class="content_item" data-aos="fadeInUp" data-aos-offset="250" data-aos-duration="1000">
             <div class="circle_img">
                 <img src="../../assets/meeting.svg" alt="">
             </div>
@@ -17,7 +17,7 @@
             </p>
         </div>
 
-        <div class="content_item" v-animateOnScroll="{animation: 'fadeIn', delay: 1000, position: 20}">
+        <div class="content_item" data-aos="fadeInUp" data-aos-offset="250" data-aos-duration="1000" data-aos-delay="1000">
             <div class="circle_img">
                 <img src="../../assets/email.svg" alt="">
             </div>
@@ -27,7 +27,7 @@
             </p>
         </div>
 
-        <div class="content_item" v-animateOnScroll="{animation: 'fadeIn', delay: 2000, position: 20}">
+        <div class="content_item" data-aos="fadeInUp" data-aos-offset="250" data-aos-duration="1000" data-aos-delay="2000">
             <div class="circle_img">
                 <img src="../../assets/goal.svg" alt="">
             </div>
@@ -40,12 +40,9 @@
 </template>
 
 <script>
-import { animateOnScroll } from 'mdbvue';
 export default {
     name: 'introSection',
-    directives: {
-        animateOnScroll
-    }
+   
 }
 </script>
 
@@ -113,6 +110,7 @@ export default {
   height:500px;
 }
 
+
 /* Extra small devices (portrait phones, less than 576px) */
 @media (max-width: 575.98px) {  
     .intro_section{
@@ -147,13 +145,16 @@ export default {
         background-color: #E2F6FE;
         min-height: 800px;
     }
+
     .intro_description{
         padding: 100px 0 0 50px;
     }
+
     .intro_title{
         color: #0981DD;
         font-weight: 800;
     }
+
     .intro_description p {
         color: #414141;
         font-weight: bold;
@@ -165,14 +166,17 @@ export default {
         display: flex;
         align-items: center;
     }
+
     .content_item{
     margin: 0 auto;
     align-items: center;
     }
+
     .content_item > * {
     margin: 0 auto; 
     text-align:center;
     }
+
     .circle_img{
     position: relative;
     width:260px;
@@ -183,6 +187,7 @@ export default {
     background-origin: border-box;
     background-clip: content-box, border-box;
     }
+    
     .intro_img{
     position: absolute;
     width: 140px;
@@ -190,9 +195,11 @@ export default {
     top:55px;
     left:55px;
     }
+
     .item_content{
     padding: 10px;
     }
+
     .goal_image{
     width:500px;
     height:500px;
