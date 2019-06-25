@@ -36,7 +36,8 @@ export const router = new Router({
             path: '/auth/confirm/:confirmCode',
             name: 'confirm',
             component: ConfirmView
-        },{
+        },
+        {
             path: '/error',
             name: 'error',
             component: ErrorView

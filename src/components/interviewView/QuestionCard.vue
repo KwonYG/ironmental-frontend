@@ -12,6 +12,7 @@
             <!-- <mdb-btn color="info-color">ANSWER >></mdb-btn> -->
             <mdb-card-text>
                 <p>
+                    <spinner :status="loadingStatus"></spinner>
                     {{ interview.answer }}
                 </p>
             </mdb-card-text>
@@ -23,6 +24,8 @@
 <script>
 import { mdbCard, mdbCardBody, mdbCardHeader, mdbCardTitle, mdbCardText, mdbBadge } from 'mdbvue';
 import { mapGetters } from 'vuex';
+import Spinner from '../Spinner.vue';
+
 export default {
     name: 'QuestionCard',
     components: {
@@ -31,7 +34,14 @@ export default {
         mdbCardHeader,
         mdbCardTitle,
         mdbCardText,
-        mdbBadge
+        mdbBadge,
+        Spinner
+    },
+    
+    data(){
+        return {
+            loadingStatus: false,
+        }  
     },
 
     computed:{
@@ -42,8 +52,14 @@ export default {
 
     created(){
         const id = this.$route.params.id;
-        this.$store.dispatch('FETCH_INTERVIEW_BY_ID',{ id });
-         
+        this.loadingStatus = true;
+        this.$store.dispatch('FETCH_INTERVIEW_BY_ID',{ id })
+                    .then(()=>{
+                        this.loadingStatus = false;
+                    })
+                    .catch(()=>{
+                        //err 페이지로
+                    });
     }
 }
 </script>

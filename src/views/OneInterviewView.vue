@@ -16,10 +16,11 @@
 
 <script>
 import QuestionCard from '../components/interviewView/QuestionCard.vue';
+
 export default {
 name: "oneInterview",
     components: {
-        QuestionCard
+        QuestionCard,
     }
 };
 </script>
