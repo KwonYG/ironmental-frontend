@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import { store } from '../store/index.js';
 
 import HomeView from '../views/HomeView.vue'
 import InterviewView from '../views/InterviewView.vue'
@@ -30,7 +31,16 @@ export const router = new Router({
         {
             path: '/interviews/:id',
             name: 'interview',
-            component: OneInterviewView
+            component: OneInterviewView,
+            beforeEnter: (to, from, next) => {
+                store.dispatch('FETCH_INTERVIEW_BY_ID', { id: to.params.id })
+                    .then(() => next())
+                    .catch(() => {
+                        next({
+                            name: 'notFound'
+                        })
+                    });
+            }
         },
         {
             path: '/auth/confirm/:confirmCode',
@@ -38,8 +48,8 @@ export const router = new Router({
             component: ConfirmView
         },
         {
-            path: '/error',
-            name: 'error',
+            path: '*',
+            name: 'notFound',
             component: ErrorView
         }
     ]

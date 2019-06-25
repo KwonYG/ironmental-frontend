@@ -50,19 +50,16 @@ export const interviewModule = {
         FETCH_INTERVIEW_BY_ID({ commit }, { id }) {
             return interview.fetchInterviewById(id)
                 .then(({ data }) => {
-                    console.log(data);
                     commit('SET_INTERVIEW_ITEM', data);
                 })
-                .catch(err => {
-                    console.log(err);
-                });
+                // .catch(err => {
+                //     console.log(err);
+                // });
         },
 
         FETCH_SPECIFIC_INTERVIEWS({ commit }, { tag }) {
             return interview.fetchSpecificInterviews(tag)
                 .then(({ data }) => {
-                    console.log(`특정 태그! ${tag}: `, data.datas);
-                    console.log('특정 태그의 nextUrl: ', data.links.next);
                     commit('SET_INTERVIEWS', data.datas);
                     commit('SET_NEXT_URL', data.links.next);
                 })

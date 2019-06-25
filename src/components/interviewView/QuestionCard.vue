@@ -50,17 +50,18 @@ export default {
         })
     },
 
-    created(){
-        const id = this.$route.params.id;
-        this.loadingStatus = true;
-        this.$store.dispatch('FETCH_INTERVIEW_BY_ID',{ id })
-                    .then(()=>{
-                        this.loadingStatus = false;
-                    })
-                    .catch(()=>{
-                        //err 페이지로
-                    });
-    }
+    // created(){ // 라우팅 처리를 할때 액션이 이루어 짐으로 데이터를 created()할 때 가져올 필요 없어짐
+    //     const id = this.$route.params.id;
+    //     this.loadingStatus = true;
+    //     this.$store.dispatch('FETCH_INTERVIEW_BY_ID',{ id })
+    //                 .then(()=>{
+    //                     this.loadingStatus = false;
+    //                 })
+    //                 .catch(()=>{
+    //                     console.log('에러!');
+    //                     //err 페이지로
+    //                 });
+    // }
 }
 </script>
 

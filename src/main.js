@@ -13,5 +13,8 @@ Vue.config.productionTip = false
 new Vue({
   router,
   store,
-  render: h => h(App)
+  render: h => h(App),
+  renderError (h, err) {
+    return h('pre', { style: { color: 'red' }}, err.stack)
+  }
 }).$mount('#app')
