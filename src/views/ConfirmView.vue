@@ -3,7 +3,7 @@
     <div class="confirm_container">
         <div class="section_intro"> 
             <h2 class="intro_title">
-                인증이 정상적으로 처리되었습니다!
+                인증이 정상적으로 처리되었습니다! 
             </h2>
             <p class="intro_content">매주 메일을 통해 인터뷰를 보내드립니다.</p>
         </div>
@@ -15,10 +15,14 @@
 </template>
 
 <script>
+/*
+ 400, 404 => 잘못된 인증 코드입니다.
+ 500 => 서버 에러입니다. 조금만 기다려주세요 ㅠㅠ
+ */
 export default {
 name: "confirmView",
-    components: {
-        
+    created(){
+        this.$store.dispatch('요청액션')
     }
 };
 </script>

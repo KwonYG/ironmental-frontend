@@ -11,7 +11,7 @@
           </div>
       </div>
     <mdb-card-body>
-      <mdb-card-title>{{ interview.question}}</mdb-card-title>
+      <mdb-card-title class="interview_title"><router-link :to="`/interviews/${interview.id}`">{{ interview.question}}</router-link></mdb-card-title>
         <mdb-btn color="info-color" @click="show = !show">ANSWER >></mdb-btn>
         <mdb-card-text>
             <p v-if="show">
@@ -45,6 +45,14 @@ export default {
 }
 </script>
 <style scoped>
+.interview_title a{
+    color: black;
+}
+
+.interview_title a:hover{
+    text-decoration: underline;
+}
+
 .question_card{
     background-color: #F2F2F2;
 }

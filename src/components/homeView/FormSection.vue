@@ -2,7 +2,7 @@
 <div class="background">
     <section class="form_section">
         <div class="form_container">
-            <img src="../../assets/envelope.svg" class="envelope_img animated slideInDown">
+            <img src="../../assets/envelope.svg" class="envelope_img" data-aos="fade-down" data-aos-duration="1500">
             <div class="form_section_intro">
                 <img src="">
                 <h2 class="intro_title">

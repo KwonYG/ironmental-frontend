@@ -1,17 +1,11 @@
 <template>
 <div class="question_list_container">
-    <div class="tags_dropdown">
-      <label class="typo__label">Select tag</label>
-        <multiselect v-model="value" :options="tags" :searchable="false" :close-on-select="true" :show-labels="false" placeholder="Pick a tag"></multiselect>
-      <pre class="language-json"><code>{{ value }}</code></pre>
-    </div>
-    <ul class="question_list">
-
-        <div>    
-            <li class="question_item" v-for="interview in interviews" :key=interview._id>
+    <drop-down></drop-down>
+    <ul class="question_list" v-infinite-scroll="loadMore" infinite-scroll-disabled="busy" infinite-scroll-distance="limit">
+        <div>
+            <li class="question_item" v-for="interview in interviews" :key=interview._id data-aos="slide-up" data-aos-offset="100" data-aos-easing="ease-out-back">
                 <question-list-item :interview="interview"></question-list-item>
-            </li>      
-            <infinite-loading @infinite="infiniteHandler"></infinite-loading>
+            </li>
         </div>
     </ul>
 </div>
@@ -19,61 +13,45 @@
 
 <script>
 import { mapGetters } from 'vuex';
-import QuestionListItem from './QuestionListItem.vue';
-import Multiselect from 'vue-multiselect'
+import infiniteScroll from 'vue-infinite-scroll'
 
+import DropDown from './DropDown.vue';
+import QuestionListItem from './QuestionListItem.vue';
 
 export default {
-    data(){
-        return{
-            tag:'',
-            offset:4,
-            value: '',
-            list:[]
-        }
+    components:{
+        DropDown,
+        QuestionListItem,
     },
 
-    components:{
-        QuestionListItem,
-        Multiselect
+    directives: {
+        infiniteScroll
+    },
+
+    data() {
+        return{
+            limit: 4,
+            busy: false
+        }
     },
 
     created(){
         this.$store.dispatch('FETCH_INTERVIEWS');
-        this.$store.dispatch('FETCH_TAGS');
     },
 
     computed:{
         ...mapGetters({
             interviews:'fetchedInterviews',
-                tags:'fetchedTags'
             }),
-
-    },
-
-    watch:{
-        value:function(){
-            this.offset = 4;
-            this.tag = this.value;
-            this.list = [];
-            this.$store.dispatch('FETCH_SPECIFIC_INTERVIEWS',{ tag: this.tag });
-        }
     },
 
     methods:{
-        infiniteHandler($state) {
-            this.$store.dispatch('FETCH_MORE_INTERVIEWS', {tag: this.tag, offset: this.offset})
-                        .then((data)=>{
-                            console.log('data: ', data);
-                            if (data.length) {
-                                this.offset += 4;
-                                this.list.push(...data);
-                                $state.loaded();
-                            } else {
-                                $state.complete();
-                            }
-                        })
-        },
+        loadMore() {
+            const nextUrl = this.$store.state.interviewModule.nextUrl;
+            this.busy = true;
+            this.$store.dispatch('FETCH_MORE_INTERVIEWS',nextUrl);
+            this.busy = false;        
+        }
     }
 }
 </script>
