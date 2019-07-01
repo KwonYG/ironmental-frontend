@@ -1,15 +1,12 @@
-import axios from 'axios';
-import { config } from './config.js';
+import axios from "axios";
+import { config } from "./config.js";
 
-const baseUrl = `${config.reqeustUrl}auth/confirm/`
+const baseUrl = `${config.reqeustUrl}auth/confirm/`;
 
-function RequestToAuth(confirmCode){
-    const requestBody = { 
-        confirmCode,
-    }; 
-    return axios.post(`${baseUrl}`, requestBody);
+function RequestToAuth(requestBody) {
+  return axios.post(`${baseUrl}`, requestBody);
 }
 
-export const sub = { 
-    RequestToAuth
+export const auth = {
+  RequestToAuth
 };

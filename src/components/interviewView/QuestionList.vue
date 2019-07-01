@@ -14,7 +14,7 @@
 <script>
 import { mapGetters } from 'vuex';
 import infiniteScroll from 'vue-infinite-scroll'
-
+import Prism from 'prismjs';
 import DropDown from './DropDown.vue';
 import QuestionListItem from './QuestionListItem.vue';
 
@@ -43,6 +43,11 @@ export default {
         ...mapGetters({
             interviews:'fetchedInterviews',
             }),
+    },
+
+    updated(){
+        console.log('잇힘');
+        Prism.highlightAll();    
     },
 
     methods:{

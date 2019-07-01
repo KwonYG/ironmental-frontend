@@ -33,7 +33,10 @@
     }
   }
 </script>
-<style>
+<style scoped>
+h1{
+  font-size: 21px;
+}
 .nav_container{
     background-color:#0059D3;;
 }

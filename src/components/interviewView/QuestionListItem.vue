@@ -6,24 +6,25 @@
           </div>
           <div class="tag_container">
               <mdb-badge class="tag_badge" pill color="indigo" v-for="tag in interview.tags" :key=interview.tag>{{ tag }}</mdb-badge>
-              <!-- <mdb-badge pill color="purple">CSS</mdb-badge>
-              <mdb-badge pill color="orange">JavaScript</mdb-badge> -->
           </div>
       </div>
     <mdb-card-body>
       <mdb-card-title class="interview_title"><router-link :to="`/interviews/${interview.id}`">{{ interview.question}}</router-link></mdb-card-title>
-        <mdb-btn color="info-color" @click="show = !show">ANSWER >></mdb-btn>
-        <mdb-card-text>
-            <p v-if="show">
-                {{ interview.answer }}
-            </p>
-        </mdb-card-text>
+        <mdb-btn color="info-color" @click="show=!show">ANSWER >></mdb-btn>
+            <div v-if="show" v-html="content">
+                <!-- {{ content }} -->
+                <!-- {{ interview.answer }} -->
+            </div>
+            <VueShowdown ref="answer" v-show="show" :markdown="`${interview.answer}`"/>
     </mdb-card-body>
   </mdb-card>
 </template>
 
 <script>
+import { VueShowdown } from 'vue-showdown' 
 import { mdbCard, mdbCardBody, mdbCardTitle, mdbCardText, mdbBtn, mdbBadge } from 'mdbvue';
+import Prism from 'prismjs';
+
 export default {
     components: {
         mdbCard,
@@ -31,20 +32,28 @@ export default {
         mdbCardTitle,
         mdbCardText,
         mdbBtn,
-        mdbBadge
+        mdbBadge,
+        VueShowdown
     },
+
     props: {
         interview: Object,
     },
+
     data(){
         return{
             show: false,
+            content:'',
             tagColor:{},
         }
-    }
+    },
+
+    methods:{
+    },
 }
 </script>
 <style scoped>
+
 .interview_title a{
     color: black;
 }

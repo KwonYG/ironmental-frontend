@@ -8,6 +8,7 @@
 <script>
 import { mapGetters } from 'vuex';
 import Multiselect from 'vue-multiselect'
+import Prism from 'prismjs';
 
 export default {
     components:{
@@ -24,6 +25,8 @@ export default {
         ...mapGetters({
             tags:'fetchedTags'
         }),
+        
+        
     },
 
     created(){
@@ -32,8 +35,12 @@ export default {
 
     methods:{
         asyncFind(actionName){
-            this.$store.dispatch('UPDATE_VALUE_ACTION',{value: actionName });
-            this.$store.dispatch('FETCH_SPECIFIC_INTERVIEWS',{ tag: actionName });
+            this.$store.dispatch('UPDATE_VALUE_ACTION',{ value: actionName });
+            this.$store.dispatch('FETCH_SPECIFIC_INTERVIEWS',{ tag: actionName })
+                    // .then(()=>{
+                    //     var block = document.getElementsByClassName('language-javascript');
+                    //     Prism.highlightAll(block);
+                    // });
         }
     }
 }

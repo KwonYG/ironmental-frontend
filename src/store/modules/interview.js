@@ -38,7 +38,7 @@ export const interviewModule = {
     actions: {
         FETCH_INTERVIEWS({ commit }) {
             return interview.fetchInterviews()
-                .then(({ data }) => {
+                .then(({ data }) => { // commit 두번 쓰지말고 한번 쓰게 로직변경해보기
                     commit('SET_INTERVIEWS', data.datas);
                     commit('SET_NEXT_URL', data.links.next);
                 })
@@ -52,9 +52,6 @@ export const interviewModule = {
                 .then(({ data }) => {
                     commit('SET_INTERVIEW_ITEM', data);
                 })
-                // .catch(err => {
-                //     console.log(err);
-                // });
         },
 
         FETCH_SPECIFIC_INTERVIEWS({ commit }, { tag }) {
@@ -71,7 +68,6 @@ export const interviewModule = {
         FETCH_MORE_INTERVIEWS({ commit }, nextUrl) {
             return interview.fetchMoreInterviews(nextUrl)
                 .then(({ data }) => {
-                    console.log('fetchMore:', data);
                     commit('ADD_MORE_INTERVIEWS', data.datas);
                     commit('SET_NEXT_URL', data.links.next);
                 })
