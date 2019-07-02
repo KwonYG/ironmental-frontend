@@ -7,7 +7,6 @@ function fetchTags(){
     return axios.get(baseUrl);
 }
 
-
 export const tags = { 
     fetchTags,
 }

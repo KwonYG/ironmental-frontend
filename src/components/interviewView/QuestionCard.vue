@@ -9,20 +9,20 @@
         </mdb-card-header>
         <mdb-card-body>
             <mdb-card-title>{{ interview.question }}</mdb-card-title>
-            <!-- <mdb-btn color="info-color">ANSWER >></mdb-btn> -->
-            <mdb-card-text>
-                <p>
-                    {{ interview.answer }}
-                </p>
-            </mdb-card-text>
+            <div class="interview_content">
+                <VueShowdown ref="answer" :markdown="`${interview.answer}`"/>
+            </div>
         </mdb-card-body>
     </mdb-card>
 </div>
 </template>
 
 <script>
-import { mdbCard, mdbCardBody, mdbCardHeader, mdbCardTitle, mdbCardText, mdbBadge } from 'mdbvue';
+import { VueShowdown } from 'vue-showdown' 
 import { mapGetters } from 'vuex';
+import { mdbCard, mdbCardBody, mdbCardHeader, mdbCardTitle, mdbBadge } from 'mdbvue';
+import bus from '../../utils/bus.js';
+
 export default {
     name: 'QuestionCard',
     components: {
@@ -30,8 +30,14 @@ export default {
         mdbCardBody,
         mdbCardHeader,
         mdbCardTitle,
-        mdbCardText,
-        mdbBadge
+        mdbBadge,
+        VueShowdown,
+    },
+    
+    data(){
+        return {
+            loadingStatus: false,
+        }  
     },
 
     computed:{
@@ -40,15 +46,13 @@ export default {
         })
     },
 
-    created(){
-        const id = this.$route.params.id;
-        this.$store.dispatch('FETCH_INTERVIEW_BY_ID',{ id });
-         
-    }
+    mounted(){
+        bus.$emit('execute:highlight');
+    },
 }
 </script>
 
-<style>
+<style scoped>
 .question_card{
     width:100%;
     border-radius: 30px;
@@ -58,4 +62,9 @@ export default {
 .card-header:first-child{
     border-radius: 30px
 }
+
+.interview_content{
+    text-align: left;
+}
+
 </style>

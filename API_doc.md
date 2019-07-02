@@ -168,7 +168,7 @@ Inserts data about subscriber.
 
 * **URL**
 
-    `/sub`
+    `/subscribers`
 
 * **Method**
 
@@ -291,7 +291,7 @@ Sends confirm code to check whether user already subscribes.
 
 * **URL**
 
-    `/confirm`
+    `/auth/confirm`
 
 * **Method:**
 

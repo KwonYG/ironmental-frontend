@@ -16,11 +16,12 @@
 
 <script>
 import QuestionCard from '../components/interviewView/QuestionCard.vue';
+
 export default {
 name: "oneInterview",
     components: {
-        QuestionCard
-    }
+        QuestionCard,
+    },
 };
 </script>
 
@@ -34,21 +35,9 @@ label{
     display:flex;
     justify-content: center;
     align-items: center;
-    /* background-color:#AF2030; */
-    
-    /* background: linear-gradient( to bottom, #0174E8, #24B3B5 ); */
     background: linear-gradient( to bottom, #006EF0, #00E1F0 );
     color:#FFF;
     text-align: center;
-    /* 라운드 경계선 */
-    border-bottom-left-radius: 50% 20%;
-    border-bottom-right-radius: 50% 20%
-    /* clip-path: polygon(
-        0 0,
-        100% 0,
-        100% 100%,
-        0 calc(100% - 5vw)
-    ); */
 }
 .section_intro .intro_title{
     margin-top:100px;

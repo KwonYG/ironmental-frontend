@@ -15,8 +15,8 @@ function fetchSpecificInterviews(tag){
     return axios.get(`${baseUrl}?tag=${tag}`);
 }
 
-function fetchMoreInterviews(tag, offset){
-    return axios.get(`${baseUrl}?tag=${tag}&offset=${offset}`);
+function fetchMoreInterviews(nextUrl){ // call next by hateoas
+    return axios.get(nextUrl);
 }
 
 export const interview = { 

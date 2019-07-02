@@ -1,15 +1,22 @@
 import Vue from 'vue';
 
 import Multiselect from 'vue-multiselect';
-import infiniteScroll from 'vue-infinite-scroll';
 import swal from 'sweetalert';
-import InfiniteLoading from 'vue-infinite-loading';
 import VueScrollTo from 'vue-scrollto';
+import VueShowdown from 'vue-showdown';
 
-Vue.use(InfiniteLoading, { /* options */ });
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
+AOS.init({
+    useClassNames: true,
+    initClassName: false,
+    animatedClassName: 'animated',
+});
+
 Vue.use({
     Multiselect,
-    infiniteScroll,
     swal,
-    VueScrollTo
+    VueScrollTo,
+    VueShowdown
 });
