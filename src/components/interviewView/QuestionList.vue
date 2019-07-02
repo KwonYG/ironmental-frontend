@@ -14,7 +14,7 @@
 <script>
 import { mapGetters } from 'vuex';
 import infiniteScroll from 'vue-infinite-scroll'
-import Prism from 'prismjs';
+import bus from '../../utils/bus.js';
 import DropDown from './DropDown.vue';
 import QuestionListItem from './QuestionListItem.vue';
 
@@ -46,13 +46,13 @@ export default {
     },
 
     updated(){
-        console.log('잇힘');
-        Prism.highlightAll();    
+        bus.$emit('execute:highlight');
     },
 
     methods:{
         loadMore() {
             const nextUrl = this.$store.state.interviewModule.nextUrl;
+            
             this.busy = true;
             this.$store.dispatch('FETCH_MORE_INTERVIEWS',nextUrl);
             this.busy = false;        

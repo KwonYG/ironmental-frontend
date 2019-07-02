@@ -21,7 +21,7 @@ export default {
 name: "oneInterview",
     components: {
         QuestionCard,
-    }
+    },
 };
 </script>
 
@@ -38,9 +38,6 @@ label{
     background: linear-gradient( to bottom, #006EF0, #00E1F0 );
     color:#FFF;
     text-align: center;
-    /* 라운드 경계선 */
-    1border-bottom-left-radius: 50% 20%;
-    1border-bottom-right-radius: 50% 20%
 }
 .section_intro .intro_title{
     margin-top:100px;

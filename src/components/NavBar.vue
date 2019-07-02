@@ -3,7 +3,7 @@
   <mdb-navbar class="nav_container" dark>
     <!-- Navbar brand -->
     <mdb-navbar-brand to="/home">
-      Iron Mental
+    Iron Mental
     </mdb-navbar-brand>
     <mdb-navbar-toggler>
       <mdb-navbar-nav>

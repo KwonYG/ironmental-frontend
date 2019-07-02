@@ -33,6 +33,7 @@ export default {
 
     created(){
         const confirmCode = this.$route.params.confirmCode;
+        
         this.$store.dispatch('REQUEST_AUTH',{ confirmCode })
         .then(()=>{
             this.title = '인증이 완료되었습니다!';
