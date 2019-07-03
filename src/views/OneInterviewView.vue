@@ -26,6 +26,7 @@ name: "oneInterview",
 </script>
 
 <style scoped>
+@import '../../public/prism.css'; /* registed prism.css globaly*/
 
 label{
     margin: 0px;
@@ -39,6 +40,7 @@ label{
     padding-top:100px;
     font-weight: 800;
 }
+
 .content_box{
     margin: 50px auto;
     padding: 30px;

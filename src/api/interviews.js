@@ -4,6 +4,7 @@ import { config } from './config.js';
 const baseUrl = `${config.reqeustUrl}interviews`
 
 function fetchInterviews(){
+    console.log(baseUrl);
     return axios.get(baseUrl);
 }
 

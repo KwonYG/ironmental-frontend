@@ -3,7 +3,7 @@
   <mdb-navbar class="nav_container" dark>
     <!-- Navbar brand -->
     <mdb-navbar-brand to="/home">
-    Iron Mental
+    <h1>Iron Mental</h1>
     </mdb-navbar-brand>
     <mdb-navbar-toggler>
       <mdb-navbar-nav>
@@ -34,8 +34,8 @@
   }
 </script>
 <style scoped>
-h1{
-  font-size: 21px;
+.nav_container h1{
+  font-size: 24px;
 }
 .nav_container{
     background-color:#0059D3;;

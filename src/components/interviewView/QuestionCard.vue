@@ -78,11 +78,12 @@ export default {
     text-align: left;
 }
 
+.interview_content h1, .interview_content h2, .interview_content h3, .interview_content h4{
+    font-size: 5rem;
+}
+
 /* Extra small devices (portrait phones, less than 576px) */
 @media (max-width: 575.98px) { 
-    h1, h4{
-        color: red;
-    }
 
 }
 
