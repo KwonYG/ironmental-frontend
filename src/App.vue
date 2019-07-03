@@ -8,8 +8,8 @@
 <script>
 import NavBar from './components/NavBar.vue';
 import FooterBar from './components/FooterBar.vue';
-import Prism from 'prismjs'
-import bus from './utils/bus.js'
+import Prism from 'prismjs';
+import bus from './utils/bus.js';
 
 export default {
   components:{
@@ -19,7 +19,6 @@ export default {
 
   methods:{
     highlightCode(){
-      console.log('app.vue 의 prism: ', Prism);
       Prism.highlightAll();
     }
   },

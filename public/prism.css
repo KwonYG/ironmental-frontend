@@ -1,5 +1,5 @@
 /* PrismJS 1.16.0
-https://prismjs.com/download.html#themes=prism&languages=markup+css+clike+javascript */
+https://prismjs.com/download.html#themes=prism&languages=markup+css+clike+javascript+c+asciidoc+asm6502+csharp+bash+basic+cpp+aspnet+coffeescript+ruby+dart+markup-templating+docker+ejs+fortran+gml+go+graphql+groovy+haskell+http+hpkp+java+scala+php+jq+javadoclike+json+jsonp+json5+kotlin+markdown+django+matlab+typescript+nginx+objectivec+opencl+pascal+perl+jsdoc+phpdoc+php-extras+sql+scss+python+r+js-extras+jsx+rust+sass+javadoc+swift+pug+tsx+visual-basic+regex+vim+wasm */
 /**
  * prism.js default theme for JavaScript, CSS and HTML
  * Based on dabblet (http://dabblet.com)
@@ -58,9 +58,9 @@ pre[class*="language-"] {
 
 :not(pre) > code[class*="language-"],
 pre[class*="language-"] {
-	background: white;
-	border-radius: .5em;
-	border: solid 1px #566270;
+	background: #fff;
+	border-radius: 0.5em;
+	border: 2px solid #566270;
 }
 
 /* Inline code */
