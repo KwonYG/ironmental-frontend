@@ -2,33 +2,23 @@ version: 2
 jobs:
   build-frontend:
     docker:
-      # specify the version you desire here
       - image: circleci/node:8.12.0
-    environment:
-      CI: false
     working_directory: ~/repo/ironmental-frontend
     steps:
-      - checkout:
-          path: ~/repo
+      - checkout
       - attach_workspace:
-          at: ~/repo
+          at: ~/repo/ironmental-frontend
       - restore_cache:
-          keys:
-            - v1-dependencies-{{ checksum "package.json" }}
-            # fallback to using the latest cache if no exact match is found
-            - v1-dependencies-
+          keys: v1-yarn-{{ checksum "yarn.lock" }}
       - run: yarn install
       - save_cache:
           paths:
-            - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
+            - ./node_modules
+          key: v1-yarn-{{ checksum "yarn.lock" }}
       - run: yarn build
-      # - store_artifacts:
-      #     path: ~/repo/ironmental-frontend/build
       - persist_to_workspace:
-          root: ~/repo
-          paths:
-            - ironmental-frontend/build
+          root: .
+          paths: dist
   deploy-frontend:
     docker:
       - image: circleci/python:2.7-jessie
