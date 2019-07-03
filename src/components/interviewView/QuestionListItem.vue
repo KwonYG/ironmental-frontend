@@ -78,12 +78,6 @@ export default {
     margin: 0 2px;
 }
 
-/* for mark_down*/
-
-.mark_down_body > h1{
-    color:red;
-}
-
 /* Extra small devices (portrait phones, less than 576px) */
 @media (max-width: 575.98px) { 
     .question_item{
