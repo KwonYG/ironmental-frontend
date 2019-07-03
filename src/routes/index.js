@@ -34,7 +34,9 @@ export const router = new Router({
             component: OneInterviewView,
             beforeEnter: (to, from, next) => {
                 store.dispatch('FETCH_INTERVIEW_BY_ID', { id: to.params.id })
-                    .then(() => next())
+                    .then(() => {
+                        next();
+                    })
                     .catch(() => {
                         next({
                             name: 'notFound'

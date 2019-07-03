@@ -1,19 +1,19 @@
-import { auth } from '../../api/auth.js';
+import { auth } from "../../api/auth.js";
 
 export const authModule = {
-    state: {
-        confirmStatus: 200
-    },
+  state: {},
 
-    getters: {
-      
-    },
+  getters: {},
 
-    mutations: {
-      
-    },
+  mutations: {},
 
-    actions: {
-        
+  actions: {
+    REQUEST_AUTH({ commit }, { confirmCode }) {
+      return auth
+        .RequestToAuth({ confirmCode })
+        .then(res => {
+          console.log("성공!:", res);
+        })
     }
-}
+  }
+};

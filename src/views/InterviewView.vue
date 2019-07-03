@@ -23,7 +23,6 @@ export default {
 .interview_section{
     min-height: 800px;
     background-color: #E2F6FE;
-    1background: linear-gradient( to bottom, #006EF0, #E2F6FE);
 }
 .interview_container{
     padding:30px;

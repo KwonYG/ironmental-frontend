@@ -21,7 +21,7 @@ export default {
 name: "oneInterview",
     components: {
         QuestionCard,
-    }
+    },
 };
 </script>
 
@@ -31,24 +31,29 @@ label{
     margin: 0px;
 }
 .one_interview_section{
-    position: relative;
-    display:flex;
-    justify-content: center;
-    align-items: center;
     background: linear-gradient( to bottom, #006EF0, #00E1F0 );
     color:#FFF;
     text-align: center;
-    /* 라운드 경계선 */
-    1border-bottom-left-radius: 50% 20%;
-    1border-bottom-right-radius: 50% 20%
 }
 .section_intro .intro_title{
-    margin-top:100px;
+    padding-top:100px;
     font-weight: 800;
 }
 .content_box{
     margin: 50px auto;
     padding: 30px;
+}
+
+/* Extra small devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) { 
+    .interview_container{
+        padding: 0;
+    }
+ }
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) and (max-width: 767.98px) {  
+  
 }
 
 </style>

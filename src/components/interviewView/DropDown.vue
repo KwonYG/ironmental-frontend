@@ -32,7 +32,7 @@ export default {
 
     methods:{
         asyncFind(actionName){
-            this.$store.dispatch('UPDATE_VALUE_ACTION',{value: actionName });
+            this.$store.dispatch('UPDATE_VALUE_ACTION',{ value: actionName });
             this.$store.dispatch('FETCH_SPECIFIC_INTERVIEWS',{ tag: actionName });
         }
     }

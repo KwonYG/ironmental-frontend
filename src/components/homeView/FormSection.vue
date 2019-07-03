@@ -80,7 +80,6 @@ import { mdbBtn, mdbIcon } from 'mdbvue';
             }else if(!validResult){
                 return swal('이메일 형식 불일치', '이메일형식 맞지 않습니다.', 'error');
             }else if(validResult){
-                // dispatch를 통해 sub모듈의 스테이트 확인 isSub, isCertify
                 this.$store.dispatch('POST_SUBSCRIPTION', { email: this.email})
                             .then(()=>{
                                 this.getResult();

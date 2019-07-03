@@ -9,22 +9,20 @@
         </mdb-card-header>
         <mdb-card-body>
             <mdb-card-title>{{ interview.question }}</mdb-card-title>
-            <!-- <mdb-btn color="info-color">ANSWER >></mdb-btn> -->
-            <mdb-card-text>
-                <p>
-                    <spinner :status="loadingStatus"></spinner>
-                    {{ interview.answer }}
-                </p>
-            </mdb-card-text>
+            <div class="interview_content" v-html="contentHtml">
+                <!-- <VueShowdown ref="answer" :markdown="`${interview.answer}`"/> -->
+            </div>
         </mdb-card-body>
     </mdb-card>
 </div>
 </template>
 
 <script>
-import { mdbCard, mdbCardBody, mdbCardHeader, mdbCardTitle, mdbCardText, mdbBadge } from 'mdbvue';
+import { VueShowdown } from 'vue-showdown' 
 import { mapGetters } from 'vuex';
-import Spinner from '../Spinner.vue';
+import { mdbCard, mdbCardBody, mdbCardHeader, mdbCardTitle, mdbBadge } from 'mdbvue';
+import bus from '../../utils/bus.js';
+import showdown from 'showdown';
 
 export default {
     name: 'QuestionCard',
@@ -33,14 +31,14 @@ export default {
         mdbCardBody,
         mdbCardHeader,
         mdbCardTitle,
-        mdbCardText,
         mdbBadge,
-        Spinner
+        VueShowdown,
     },
     
     data(){
         return {
             loadingStatus: false,
+            contentHtml: '',
         }  
     },
 
@@ -50,22 +48,22 @@ export default {
         })
     },
 
-    // created(){ // 라우팅 처리를 할때 액션이 이루어 짐으로 데이터를 created()할 때 가져올 필요 없어짐
-    //     const id = this.$route.params.id;
-    //     this.loadingStatus = true;
-    //     this.$store.dispatch('FETCH_INTERVIEW_BY_ID',{ id })
-    //                 .then(()=>{
-    //                     this.loadingStatus = false;
-    //                 })
-    //                 .catch(()=>{
-    //                     console.log('에러!');
-    //                     //err 페이지로
-    //                 });
-    // }
+    created(){
+        const converter = new showdown.Converter();
+        const text = this.interview.answer;
+        const html = converter.makeHtml(text);
+
+        this.contentHtml = html;
+        
+    },
+
+    mounted(){
+        bus.$emit('execute:highlight');
+    },
 }
 </script>
 
-<style>
+<style scoped>
 .question_card{
     width:100%;
     border-radius: 30px;
@@ -75,4 +73,24 @@ export default {
 .card-header:first-child{
     border-radius: 30px
 }
+
+.interview_content{
+    text-align: left;
+}
+
+/* Extra small devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) { 
+    h1, h4{
+        color: red;
+    }
+
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) and (max-width: 767.98px) {  
+    .question_item{
+        margin: 0;
+    }
+}
+
 </style>
