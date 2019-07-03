@@ -11,7 +11,9 @@
     <mdb-card-body>
       <mdb-card-title class="interview_title"><router-link :to="`/interviews/${interview.id}`">{{ interview.question}}</router-link></mdb-card-title>
         <mdb-btn color="info-color" @click="show=!show">ANSWER >></mdb-btn>
-        <VueShowdown ref="answer" v-show="show" :markdown="`${interview.answer}`"/>
+        <div class="mark_down_body">
+            <VueShowdown ref="answer" v-show="show" :markdown="`${interview.answer}`"/>
+        </div>
     </mdb-card-body>
   </mdb-card>
 </template>
@@ -34,7 +36,6 @@ export default {
         interview: Object,
     },
     
-
     data(){
         return{
             show: false,
@@ -75,5 +76,25 @@ export default {
 
 .tag_badge{
     margin: 0 2px;
+}
+
+/* for mark_down*/
+
+.mark_down_body > h1{
+    color:red;
+}
+
+/* Extra small devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) { 
+    .question_item{
+        margin: 30px 0;
+    }
+ }
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) and (max-width: 767.98px) {  
+    .question_item{
+        margin: 0;
+    }
 }
 </style>

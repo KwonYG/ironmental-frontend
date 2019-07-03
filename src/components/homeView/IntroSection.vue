@@ -3,27 +3,28 @@
     <div class="intro_description">
         <h2 class="intro_title">WELCOME TO IRON MENTAL</h2>
         <p>
-            여기는 설명설명설명설명여기는 설명설명설명설명여기는 설명설명설명설명여기는 설명설명설명설명여기는<br>
-            설명설명설명설명여기는 설명설명설명설명여기는 설명설명설명설명
+            기술 면접을 보면서 멘탈이 흔들린 적 있으신가요?<br>
+            이제 Iron Mental과 함께 멘탈을 챙겨보세요!
         </p>
     </div>
     <div class="intro_content">
         <div class="content_item" data-aos="fadeInUp" data-aos-offset="250" data-aos-duration="1000">
             <div class="circle_img">
-                <img src="../../assets/meeting.svg" alt="">
+                <img src="../../assets/email.svg" alt="이메일 아이콘">
             </div>
             <p class="item_content">
-                여기 동그라미
+                구독신청을 해주세요.<br>
+                매주 이메일을 통해 면접 질문을 보내드립니다.
             </p>
         </div>
 
         <div class="content_item" data-aos="fadeInUp" data-aos-offset="250" data-aos-duration="1000" data-aos-delay="1000">
             <div class="circle_img">
-                <img src="../../assets/email.svg" alt="">
+                <img src="../../assets/list.svg" alt="리스트 아이콘">
             </div>
             <p class="item_content">
-                여기 동그라미여기 동그라미여기 동그라미여기 동그라미여기 동그라미여기 동그라미여기 동그라여기 <br>
-                여기 동그라미여기 동그라미여기 동그라미여기 동그라미여기 동그라미
+                매주 이메일을 기다리기엔 시간이 부족하신가요?<br>
+                인터뷰 메뉴를 클릭하시면 모든 면접질문을 보실 수 있습니다.
             </p>
         </div>
 
@@ -32,7 +33,8 @@
                 <img src="../../assets/goal.svg" alt="">
             </div>
             <p class="item_content">
-                여기 동그라미
+                더 이상 쿠크다스 멘탈은 그만!<br>
+                Iron Mental과 함께 실력을 키워보세요.
             </p>
         </div>
     </div>
@@ -124,6 +126,7 @@ export default {
 }
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) and (max-width: 767.98px) {  }
+
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) and (max-width: 991.98px) { 
     .intro_section{
@@ -138,6 +141,7 @@ export default {
 }
 /* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) and (max-width: 1199.98px) {  }
+
 /* Extra large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) { 
     .intro_section{
