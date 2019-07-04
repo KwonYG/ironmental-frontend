@@ -70,8 +70,6 @@ export const interviewModule = {
                     commit('ADD_MORE_INTERVIEWS', data.datas);
                     commit('SET_NEXT_URL', data.links.next);
                 })
-                .catch(err => {
-                })
         }
     }
 }
