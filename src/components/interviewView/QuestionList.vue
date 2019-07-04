@@ -2,7 +2,7 @@
 <div class="question_list_container">
     <drop-down></drop-down>
     <ul class="question_list" v-infinite-scroll="loadMore" infinite-scroll-disabled="busy" infinite-scroll-distance="limit">
-        <li class="question_item" v-for="interview in interviews" :key=interview._id data-aos="slide-up" data-aos-offset="100" data-aos-easing="ease-out-back">
+        <li class="question_item" v-for="interview in interviews" :key=interview.id data-aos="slide-up" data-aos-offset="100" data-aos-easing="ease-out-back">
             <question-list-item :interview="interview"></question-list-item>
         </li>
     </ul>
@@ -33,7 +33,7 @@ export default {
         return{
             limit: 4,
             busy: false,
-            isLoading: true,
+            isLoading: false,
         }
     },
 
@@ -44,6 +44,7 @@ export default {
     },
 
     created(){
+        this.changeIsLoading()
         this.$store.dispatch('FETCH_INTERVIEWS').then(()=>{
                 this.changeIsLoading()
         });
@@ -65,6 +66,9 @@ export default {
             this.changeIsLoading();
             this.$store.dispatch('FETCH_MORE_INTERVIEWS',nextUrl)
             .then(()=>{
+                this.changeIsLoading();
+            })
+            .catch(err => {
                 this.changeIsLoading();
             });
             this.busy = false;        
