@@ -42,8 +42,6 @@ export const interviewModule = {
                     commit('SET_INTERVIEWS', data.datas);
                     commit('SET_NEXT_URL', data.links.next);
                 })
-                .catch(err => {
-                });
         },
 
         FETCH_INTERVIEW_BY_ID({ commit }, { id }) {
@@ -60,7 +58,6 @@ export const interviewModule = {
                     commit('SET_NEXT_URL', data.links.next);
                 })
                 .catch(err => {
-                    console.log(err);
                 });
         },
 
