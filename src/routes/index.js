@@ -54,5 +54,5 @@ export const router = new Router({
             name: 'notFound',
             component: ErrorView
         }
-    ]
+    ],
 })

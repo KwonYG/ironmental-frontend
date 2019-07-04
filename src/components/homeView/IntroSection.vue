@@ -115,11 +115,17 @@ export default {
 /* Extra small devices (portrait phones, less than 576px) */
 @media (max-width: 575.98px) {  
     .intro_section{
-    text-align: center;
+        text-align: center;
     }
+
+    .content_item{
+        padding-bottom: 70px;
+    }
+
     .intro_description{
         padding: 50px 30px 20px 30px;
     }
+
     .intro_content{
         display: block;
     }
