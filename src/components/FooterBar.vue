@@ -41,4 +41,7 @@ export default {
 </script>
 
 <style scoped>
+.page-footer{
+  margin-top:0 !important;
+}
 </style>
