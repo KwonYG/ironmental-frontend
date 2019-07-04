@@ -16,7 +16,7 @@ export const subModule = {
 
   mutations: {
     SET_SUB_RESULT(state, subData) {
-      state.subResult = subData; // 결과가 객체로 날아오겠지?
+      state.subResult = subData;
     }
   },
 
@@ -28,7 +28,6 @@ export const subModule = {
           commit("SET_SUB_RESULT", data);
         })
         .catch(err => {
-          console.log(err);
         });
     }
   }
