@@ -43,7 +43,6 @@ export const interviewModule = {
                     commit('SET_NEXT_URL', data.links.next);
                 })
                 .catch(err => {
-                    console.log(err);
                 });
         },
 
@@ -72,7 +71,6 @@ export const interviewModule = {
                     commit('SET_NEXT_URL', data.links.next);
                 })
                 .catch(err => {
-                    console.log(err);
                 })
         }
     }

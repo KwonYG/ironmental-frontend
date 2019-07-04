@@ -12,7 +12,6 @@ export const authModule = {
       return auth
         .RequestToAuth({ confirmCode })
         .then(res => {
-          console.log("성공!:", res);
         })
     }
   }
