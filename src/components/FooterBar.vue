@@ -1,6 +1,6 @@
 <template>
   <!-- Footer -->
-  <mdb-footer color="blue" class="font-small pt-4">
+  <mdb-footer class="font-small pt-4">
     <mdb-container class="text-left">
       <mdb-row>
         <mdb-col sm="6">
@@ -42,6 +42,7 @@ export default {
 
 <style scoped>
 .page-footer{
+  background-color: #0059D3;
   margin-top:0 !important;
 }
 </style>
