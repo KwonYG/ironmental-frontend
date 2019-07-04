@@ -26,23 +26,25 @@ name: "oneInterview",
 </script>
 
 <style scoped>
-@import '../../public/prism.css'; /* registed prism.css globaly*/
+@import '../../public/prism.css';
 
 label{
     margin: 0px;
 }
+
 .one_interview_section{
     background: linear-gradient( to bottom, #006EF0, #00E1F0 );
     color:#FFF;
     text-align: center;
 }
+
 .section_intro .intro_title{
     padding-top:100px;
     font-weight: 800;
 }
 
 .content_box{
-    margin: 50px auto;
+    margin: 0 auto;
     padding: 30px;
 }
 

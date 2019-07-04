@@ -3,12 +3,12 @@
     <div class="intro_description">
         <h2 class="intro_title">WELCOME TO IRON MENTAL</h2>
         <p>
-            기술 면접을 보면서 멘탈이 흔들린 적 있으신가요?<br>
-            이제 Iron Mental과 함께 멘탈을 챙겨보세요!
+            더 이상 쿠크다스 멘탈은 그만!<br>
+            이제 면접장에서 강철 멘탈이 되어보세요!
         </p>
     </div>
     <div class="intro_content">
-        <div class="content_item" data-aos="fadeInUp" data-aos-offset="250" data-aos-duration="1000">
+        <div class="content_item" data-aos="fadeInUp" data-aos-offset="250" data-aos-duration="1000" data-aos-delay="1000" data-aos-once="true"> 
             <div class="circle_img">
                 <img src="../../assets/email.svg" alt="이메일 아이콘">
             </div>
@@ -18,7 +18,7 @@
             </p>
         </div>
 
-        <div class="content_item" data-aos="fadeInUp" data-aos-offset="250" data-aos-duration="1000" data-aos-delay="1000">
+        <div class="content_item" data-aos="fadeInUp" data-aos-offset="250" data-aos-duration="1000" data-aos-delay="2000" data-aos-once="true">
             <div class="circle_img">
                 <img src="../../assets/list.svg" alt="리스트 아이콘">
             </div>
@@ -28,12 +28,12 @@
             </p>
         </div>
 
-        <div class="content_item" data-aos="fadeInUp" data-aos-offset="250" data-aos-duration="1000" data-aos-delay="2000">
+        <div class="content_item" data-aos="fadeInUp" data-aos-offset="250" data-aos-duration="1000" data-aos-delay="3000" data-aos-once="true">
             <div class="circle_img">
-                <img src="../../assets/goal.svg" alt="">
+                <img src="../../assets/goal.svg" alt="성장 아이콘">
             </div>
             <p class="item_content">
-                더 이상 쿠크다스 멘탈은 그만!<br>
+                기술 면접을 보면서 멘탈이 흔들린 적 있으신가요?<br>
                 Iron Mental과 함께 실력을 키워보세요.
             </p>
         </div>
@@ -115,17 +115,29 @@ export default {
 /* Extra small devices (portrait phones, less than 576px) */
 @media (max-width: 575.98px) {  
     .intro_section{
-    text-align: center;
-}
-.intro_description{
-    padding: 50px 30px 20px 30px;
-}
-.intro_content{
-    display: block;
-}
+        text-align: center;
+    }
+
+    .content_item{
+        padding-bottom: 70px;
+    }
+
+    .intro_description{
+        padding: 50px 30px 20px 30px;
+    }
+
+    .intro_content{
+        display: block;
+    }
+
+    [data-aos-delay] {
+        transition-delay: 0s !important;
+    }
 }
 /* Small devices (landscape phones, 576px and up) */
-@media (min-width: 576px) and (max-width: 767.98px) {  }
+@media (min-width: 576px) and (max-width: 767.98px) { 
+
+}
 
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) and (max-width: 991.98px) { 

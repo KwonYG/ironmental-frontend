@@ -3,9 +3,7 @@
     <mdb-card class="question_card">
         <mdb-card-header class="card_header" color="info-color">
             <!-- badge는 v-for와 v-if문으로 해결-->
-            <mdb-badge pill color="indigo">HTML</mdb-badge>
-            <mdb-badge pill color="purple">CSS</mdb-badge>
-            <mdb-badge pill color="orange">JavaScript</mdb-badge>
+            <mdb-badge class="tag_badge" v-for="tag in tags" :key="tag.name" pill :color="tag.color">{{ tag.name }}</mdb-badge>
         </mdb-card-header>
         <mdb-card-body>
             <mdb-card-title>{{ interview.question }}</mdb-card-title>
@@ -39,6 +37,8 @@ export default {
         return {
             loadingStatus: false,
             contentHtml: '',
+            tagColors:["indigo", "purple", "orange", "green", "pink", "badge-light"],
+            tags:[],
         }  
     },
 
@@ -54,11 +54,32 @@ export default {
         const html = converter.makeHtml(text);
 
         this.contentHtml = html;
-        
+    },
+
+    methods:{
+        setTagColors(){
+            const tagDatas = this.interview.tags;
+            const colorLength = this.tagColors.length;
+            
+            let index = 0;
+            tagDatas.forEach(tag => {
+                if(index === colorLength - 1){
+                    index = 0;
+                }
+
+                this.tags.push({
+                    name: tag,
+                    color: this.tagColors[index],
+                })
+
+                index++;
+            })
+        }
     },
 
     mounted(){
         bus.$emit('execute:highlight');
+        this.setTagColors();
     },
 }
 </script>
