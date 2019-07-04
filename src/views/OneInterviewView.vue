@@ -38,6 +38,10 @@ label{
     text-align: center;
 }
 
+.interview_container{
+    min-height:720px;
+}
+
 .section_intro .intro_title{
     padding-top:100px;
     font-weight: 800;
