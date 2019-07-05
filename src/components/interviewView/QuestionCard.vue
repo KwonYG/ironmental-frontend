@@ -1,18 +1,17 @@
 <template>
-<div>
+<section class="interview_card_section">
     <mdb-card class="question_card">
         <mdb-card-header class="card_header" color="info-color">
-            <!-- badge는 v-for와 v-if문으로 해결-->
             <mdb-badge class="tag_badge" v-for="tag in tags" :key="tag.name" pill :color="tag.color">{{ tag.name }}</mdb-badge>
         </mdb-card-header>
         <mdb-card-body>
-            <mdb-card-title>{{ interview.question }}</mdb-card-title>
+            <h3>{{ interview.question }}</h3>
             <div class="interview_content" v-html="contentHtml">
                 <!-- <VueShowdown ref="answer" :markdown="`${interview.answer}`"/> -->
             </div>
         </mdb-card-body>
     </mdb-card>
-</div>
+</section>
 </template>
 
 <script>

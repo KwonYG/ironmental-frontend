@@ -1,10 +1,11 @@
 <template>
     <section class="one_interview_section">
+        <h2 class="section_title">인터뷰 상세보기</h2>
         <div class="interview_container">
             <div class="section_intro">
-                <h2 class="intro_title animated slideInDown">
+                <div class="intro_title animated slideInDown">
                     멘탈 +1
-                </h2>
+                </div>
                 <p class="intro_content">어때요 도움이 되셨나요?</p>
             </div>
             <div class="content_box">
@@ -42,9 +43,14 @@ label{
     min-height:720px;
 }
 
+.section_title{
+    display:none;
+}
+
 .section_intro .intro_title{
     padding-top:100px;
     font-weight: 800;
+    font-size: 28px;
 }
 
 .content_box{
