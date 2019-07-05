@@ -6,7 +6,7 @@
             <question-list-item :interview="interview"></question-list-item>
         </li>
     </ul>
-    <spinner v-if="isLoading"></spinner>
+    <!-- <spinner v-if="isLoading"></spinner> -->
 </div>
 </template>
 
@@ -16,13 +16,13 @@ import infiniteScroll from 'vue-infinite-scroll'
 import bus from '../../utils/bus.js';
 import DropDown from './DropDown.vue';
 import QuestionListItem from './QuestionListItem.vue';
-import Spinner from '../Spinner.vue';
+// import Spinner from '../Spinner.vue';
 
 export default {
     components:{
         DropDown,
         QuestionListItem,
-        Spinner
+        // Spinner
     },
 
     directives: {
@@ -39,14 +39,18 @@ export default {
 
     computed:{
         ...mapGetters({
-            interviews:'fetchedInterviews',
+                interviews:'fetchedInterviews',
             }),
     },
 
     created(){
         this.changeIsLoading()
-        this.$store.dispatch('FETCH_INTERVIEWS').then(()=>{
-                this.changeIsLoading()
+        this.$store.dispatch('FETCH_INTERVIEWS')
+        .then(()=>{
+            this.changeIsLoading()
+        })
+        .catch(()=>{
+            this.changeIsLoading();
         });
     },
 
@@ -64,13 +68,14 @@ export default {
             
             this.busy = true;
             this.changeIsLoading();
+
             this.$store.dispatch('FETCH_MORE_INTERVIEWS',nextUrl)
-            .then(()=>{
-                this.changeIsLoading();
-            })
-            .catch(err => {
-                this.changeIsLoading();
-            });
+                .then(()=>{
+                    this.changeIsLoading();
+                })
+                .catch(err => {
+                    this.changeIsLoading();
+                });
             this.busy = false;        
         }
     }

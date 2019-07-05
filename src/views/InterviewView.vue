@@ -1,6 +1,7 @@
 <template>
 <div class="interview_wrap">
     <section class="interview_section">
+        <h2 class="section_title">인터뷰</h2>
         <div class="interview_container">
             <question-list></question-list>
         </div>
@@ -24,6 +25,10 @@ export default {
     min-height: 800px;
     background-color: #E2F6FE;
 }
+.section_title{
+    display:none;
+}
+
 .interview_container{
     padding:30px;
 }

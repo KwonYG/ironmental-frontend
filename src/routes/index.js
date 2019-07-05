@@ -7,7 +7,6 @@ import InterviewView from '../views/InterviewView.vue'
 import OneInterviewView from '../views/OneInterviewView.vue';
 import ConfirmView from '../views/ConfirmView.vue';
 import ErrorView from '../views/ErrorView.vue';
-import Spinner from '../components/Spinner.vue';
 
 Vue.use(Router);
 
@@ -53,12 +52,6 @@ export const router = new Router({
             path: '/auth/confirm/:confirmCode',
             name: 'confirm',
             component: ConfirmView
-        },
-
-        {
-            path: '/spinner',
-            name: 'spinner',
-            component: Spinner
         },
 
         {

@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { config } from './config.js';
 
-const baseUrl = `${config.reqeustUrl}interviews`
+const baseUrl = `${config.reqeustUrl}/interviews`
 
 function fetchInterviews(){
     return axios.get(baseUrl);
