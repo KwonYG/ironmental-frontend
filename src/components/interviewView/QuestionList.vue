@@ -68,13 +68,14 @@ export default {
             
             this.busy = true;
             this.changeIsLoading();
+
             this.$store.dispatch('FETCH_MORE_INTERVIEWS',nextUrl)
-            .then(()=>{
-                this.changeIsLoading();
-            })
-            .catch(err => {
-                this.changeIsLoading();
-            });
+                .then(()=>{
+                    this.changeIsLoading();
+                })
+                .catch(err => {
+                    this.changeIsLoading();
+                });
             this.busy = false;        
         }
     }
