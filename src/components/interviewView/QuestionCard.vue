@@ -93,6 +93,7 @@ export default {
 }
 
 .markdown-body{
+    font-family: 'Noto Sans KR', sans-serif;
     padding: 0 30px;
 }
 
