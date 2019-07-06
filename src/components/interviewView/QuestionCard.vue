@@ -6,8 +6,10 @@
         </mdb-card-header>
         <mdb-card-body>
             <h3>{{ interview.question }}</h3>
-            <div class="interview_content" v-html="contentHtml">
-                <!-- <VueShowdown ref="answer" :markdown="`${interview.answer}`"/> -->
+            <div class="interview_content">
+                <div class="markdown-body">
+                    <VueShowdown ref="answer" :markdown="interview.answer"/>
+                </div>
             </div>
         </mdb-card-body>
     </mdb-card>
@@ -19,8 +21,6 @@ import { VueShowdown } from 'vue-showdown'
 import { mapGetters } from 'vuex';
 import { mdbCard, mdbCardBody, mdbCardHeader, mdbCardTitle, mdbBadge } from 'mdbvue';
 import bus from '../../utils/bus.js';
-import showdown from 'showdown';
-
 export default {
     name: 'QuestionCard',
     components: {
@@ -45,14 +45,6 @@ export default {
         ...mapGetters({
             interview: 'fetchedInterviewItem'
         })
-    },
-
-    created(){
-        const converter = new showdown.Converter();
-        const text = this.interview.answer;
-        const html = converter.makeHtml(text);
-
-        this.contentHtml = html;
     },
 
     methods:{
@@ -84,6 +76,8 @@ export default {
 </script>
 
 <style scoped>
+@import url('../../../public/github-markdown.css');
+
 .question_card{
     width:100%;
     border-radius: 30px;
@@ -98,8 +92,8 @@ export default {
     text-align: left;
 }
 
-.interview_content h1, .interview_content h2, .interview_content h3, .interview_content h4{
-    font-size: 5rem;
+.markdown-body{
+    padding: 0 30px;
 }
 
 /* Extra small devices (portrait phones, less than 576px) */
