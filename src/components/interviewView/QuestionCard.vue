@@ -1,112 +1,128 @@
 <template>
-<section class="interview_card_section">
+  <section class="interview_card_section">
     <mdb-card class="question_card">
-        <mdb-card-header class="card_header" color="info-color">
-            <mdb-badge class="tag_badge" v-for="tag in tags" :key="tag.name" pill :color="tag.color">{{ tag.name }}</mdb-badge>
-        </mdb-card-header>
-        <mdb-card-body>
-            <h3>{{ interview.question }}</h3>
-            <div class="interview_content">
-                <div class="markdown-body">
-                    <VueShowdown ref="answer" :markdown="interview.answer"/>
-                </div>
-            </div>
-        </mdb-card-body>
+      <mdb-card-header class="card_header" color="info-color">
+        <mdb-badge
+          class="tag_badge"
+          v-for="tag in tags"
+          :key="tag.name"
+          pill
+          :color="tag.color"
+        >{{ tag.name }}</mdb-badge>
+      </mdb-card-header>
+      <mdb-card-body>
+        <h3 class="interview_title">{{ interview.question }}</h3>
+        <div class="interview_content">
+          <div class="markdown-body">
+            <VueShowdown ref="answer" :markdown="interview.answer" />
+          </div>
+        </div>
+      </mdb-card-body>
     </mdb-card>
-</section>
+  </section>
 </template>
 
 <script>
-import { VueShowdown } from 'vue-showdown' 
-import { mapGetters } from 'vuex';
-import { mdbCard, mdbCardBody, mdbCardHeader, mdbCardTitle, mdbBadge } from 'mdbvue';
-import bus from '../../utils/bus.js';
+import { VueShowdown } from "vue-showdown";
+import { mapGetters } from "vuex";
+import {
+  mdbCard,
+  mdbCardBody,
+  mdbCardHeader,
+  mdbBadge
+} from "mdbvue";
+import bus from "../../utils/bus.js";
+
 export default {
-    name: 'QuestionCard',
-    components: {
-        mdbCard,
-        mdbCardBody,
-        mdbCardHeader,
-        mdbCardTitle,
-        mdbBadge,
-        VueShowdown,
-    },
-    
-    data(){
-        return {
-            loadingStatus: false,
-            contentHtml: '',
-            tagColors:["indigo", "purple", "orange", "green", "pink", "badge-light"],
-            tags:[],
-        }  
-    },
+  name: "QuestionCard",
+  components: {
+    mdbCard,
+    mdbCardBody,
+    mdbCardHeader,
+    mdbBadge,
+    VueShowdown
+  },
 
-    computed:{
-        ...mapGetters({
-            interview: 'fetchedInterviewItem'
-        })
-    },
+  data() {
+    return {
+      loadingStatus: false,
+      contentHtml: "",
+      tagColors: ["indigo", "purple", "orange", "green", "pink", "badge-light"],
+      tags: []
+    };
+  },
 
-    methods:{
-        setTagColors(){
-            const tagDatas = this.interview.tags;
-            const colorLength = this.tagColors.length;
-            
-            let index = 0;
-            tagDatas.forEach(tag => {
-                if(index === colorLength - 1){
-                    index = 0;
-                }
+  computed: {
+    ...mapGetters({
+      interview: "fetchedInterviewItem"
+    })
+  },
 
-                this.tags.push({
-                    name: tag,
-                    color: this.tagColors[index],
-                })
+  methods: {
+    setTagColors() {
+      const tagDatas = this.interview.tags;
+      const colorLength = this.tagColors.length;
 
-                index++;
-            })
+      let index = 0;
+      tagDatas.forEach(tag => {
+        if (index === colorLength - 1) {
+          index = 0;
         }
-    },
 
-    mounted(){
-        bus.$emit('execute:highlight');
-        this.setTagColors();
-    },
-}
+        this.tags.push({
+          name: tag,
+          color: this.tagColors[index]
+        });
+
+        index++;
+      });
+    }
+  },
+
+  mounted() {
+    bus.$emit("execute:highlight");
+    this.setTagColors();
+  }
+};
 </script>
 
 <style scoped>
-@import url('../../../public/github-markdown.css');
+@import url("../../../public/github-markdown.css");
 
-.question_card{
-    width:100%;
-    border-radius: 30px;
-    color:black;
+.question_card {
+  width: 100%;
+  border-radius: 30px;
+  color: black;
 }
 
-.card-header:first-child{
-    border-radius: 30px
+.card-header:first-child {
+  border-radius: 30px;
 }
 
-.interview_content{
-    text-align: left;
+.interview_title {
+  margin-bottom: 30px;
 }
 
-.markdown-body{
-    font-family: 'Noto Sans KR', sans-serif;
-    padding: 0 30px;
+.interview_content {
+  text-align: left;
+}
+
+.markdown-body {
+  font-family: "Noto Sans KR", sans-serif;
+  padding: 0 30px;
 }
 
 /* Extra small devices (portrait phones, less than 576px) */
-@media (max-width: 575.98px) { 
-
+@media (max-width: 575.98px) {
+  .markdown-body {
+    padding: 0 5px;
+  }
 }
 
 /* Small devices (landscape phones, 576px and up) */
-@media (min-width: 576px) and (max-width: 767.98px) {  
-    .question_item{
-        margin: 0;
-    }
+@media (min-width: 576px) and (max-width: 767.98px) {
+  .question_item {
+    margin: 0;
+  }
 }
-
 </style>
