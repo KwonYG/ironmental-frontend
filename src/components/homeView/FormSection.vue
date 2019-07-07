@@ -7,27 +7,26 @@
           class="envelope_img"
           data-aos="fade-down"
           data-aos-duration="1500"
+          alt="편지 봉투 아이콘"
         />
         <div class="form_section_intro">
-          <img src />
           <h2 class="intro_title">면접 시, 당신의 멘탈을 지켜드립니다!</h2>
           <p class="intro_content">IT 관련 면접질문과 모법답안을 메일을 통해 매주 보내드립니다.</p>
         </div>
         <div class="form_box">
           <form v-on:submit.prevent="onSubmit">
-            <label for="email_input" class="email_label grey-text font-weigt-light">
-              <mdb-icon color="white" far icon="envelope" size="2x" alt="이메일 아이콘"></mdb-icon>
-            </label>
+            <mdb-icon color="white" far icon="envelope" size="2x" alt="이메일 아이콘"></mdb-icon>
             <input
               type="email"
-              id="email_input"
+              title="이메일 주소"
+              id="email_adress"
               v-model="email"
               class="form-control"
               placeholder="Your e-mail"
             />
             <div class="text-center">
-              <mdb-btn class="submit_btn btn btn-outline-white" color="amber">
-                <i class="far fa-paper-plane" alt="전송"></i>
+              <mdb-btn class="submit_btn btn btn-outline-white" color="amber" title="전송버튼">
+                <i class="far fa-paper-plane" alt="전송 아이콘"></i>
               </mdb-btn>
             </div>
           </form>
