@@ -1,8 +1,6 @@
 import Vue from 'vue';
 
 import Multiselect from 'vue-multiselect';
-import swal from 'sweetalert';
-import VueScrollTo from 'vue-scrollto';
 import VueShowdown from 'vue-showdown';
 
 import AOS from 'aos';
@@ -16,7 +14,5 @@ AOS.init({
 
 Vue.use({
     Multiselect,
-    swal,
-    VueScrollTo,
     VueShowdown
 });

@@ -11,16 +11,23 @@
         <mdb-col sm="6">
           <h5 class="title">Devrother</h5>
           <ul>
-            <li class="list-unstyled"><a href="#!">버그 신고</a></li>
-            <li class="list-unstyled"><a href="#!">이메일</a></li>
-            <li class="list-unstyled"><a href="#!">공헌하기</a></li>
+            <li class="list-unstyled">
+              <a href="#!">버그 신고</a>
+            </li>
+            <li class="list-unstyled">
+              <a href="#!">이메일</a>
+            </li>
+            <li class="list-unstyled">
+              <a href="#!">공헌하기</a>
+            </li>
           </ul>
         </mdb-col>
       </mdb-row>
     </mdb-container>
     <div class="footer-copyright text-center py-3">
       <mdb-container fluid>
-        &copy; 2019 Copyright: <a href="https://github.com/Devrother"> Devrother </a>
+        &copy; 2019 Copyright:
+        <a href="https://github.com/Devrother">Devrother</a>
       </mdb-container>
     </div>
   </mdb-footer>
@@ -28,21 +35,21 @@
 </template>
 
 <script>
-import { mdbFooter, mdbContainer, mdbRow, mdbCol } from 'mdbvue';
+import { mdbFooter, mdbContainer, mdbRow, mdbCol } from "mdbvue";
 export default {
-    name: 'FooterPage',
-    components: {
-        mdbFooter,
-        mdbContainer,
-        mdbRow,
-        mdbCol
-    }
-}
+  name: "FooterPage",
+  components: {
+    mdbFooter,
+    mdbContainer,
+    mdbRow,
+    mdbCol
+  }
+};
 </script>
 
 <style scoped>
-.page-footer{
-  background-color: #0059D3;
-  margin-top:0 !important;
+.page-footer {
+  background-color: #0059d3;
+  margin-top: 0 !important;
 }
 </style>
