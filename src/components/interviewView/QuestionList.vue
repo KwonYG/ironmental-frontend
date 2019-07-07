@@ -1,114 +1,138 @@
 <template>
-<div class="question_list_container">
+  <div class="question_list_container">
     <drop-down></drop-down>
-    <ul class="question_list" v-infinite-scroll="loadMore" infinite-scroll-disabled="busy" infinite-scroll-distance="limit">
-        <li class="question_item" v-for="interview in interviews" :key=interview.id data-aos="slide-up" data-aos-offset="100" data-aos-easing="ease-out-back">
-            <question-list-item :interview="interview"></question-list-item>
-        </li>
+    <ul
+      class="question_list"
+      v-infinite-scroll="loadMore"
+      infinite-scroll-disabled="busy"
+      infinite-scroll-distance="limit"
+    >
+      <li
+        class="question_item"
+        v-for="interview in interviews"
+        :key="interview.id"
+        data-aos="slide-up"
+        data-aos-offset="100"
+        data-aos-easing="ease-out-back"
+      >
+        <question-list-item :interview="interview"></question-list-item>
+      </li>
     </ul>
     <!-- <spinner v-if="isLoading"></spinner> -->
-</div>
+  </div>
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
-import infiniteScroll from 'vue-infinite-scroll'
-import bus from '../../utils/bus.js';
-import DropDown from './DropDown.vue';
-import QuestionListItem from './QuestionListItem.vue';
+import { mapGetters } from "vuex";
+import infiniteScroll from "vue-infinite-scroll";
+import bus from "../../utils/bus.js";
+import DropDown from "./DropDown.vue";
+import QuestionListItem from "./QuestionListItem.vue";
 // import Spinner from '../Spinner.vue';
 
 export default {
-    components:{
-        DropDown,
-        QuestionListItem,
-        // Spinner
+  components: {
+    DropDown,
+    QuestionListItem
+    // Spinner
+  },
+
+  directives: {
+    infiniteScroll
+  },
+
+  data() {
+    return {
+      limit: 4,
+      busy: false,
+      isLoading: false
+    };
+  },
+
+  computed: {
+    ...mapGetters({
+      interviews: "fetchedInterviews"
+    })
+  },
+
+  created() {
+    this.changeIsLoading();
+    this.$store
+      .dispatch("FETCH_INTERVIEWS")
+      .then(() => {
+        this.changeIsLoading();
+      })
+      .catch(() => {
+        this.changeIsLoading();
+      });
+  },
+
+  updated() {
+    bus.$emit("execute:highlight");
+  },
+
+  methods: {
+    changeIsLoading() {
+      this.isLoading = !this.isLoading;
     },
 
-    directives: {
-        infiniteScroll
-    },
+    loadMore() {
+      const nextUrl = this.$store.state.interviewModule.nextUrl;
 
-    data() {
-        return{
-            limit: 4,
-            busy: false,
-            isLoading: false,
-        }
-    },
+      this.busy = true;
+      this.changeIsLoading();
 
-    computed:{
-        ...mapGetters({
-                interviews:'fetchedInterviews',
-            }),
-    },
-
-    created(){
-        this.changeIsLoading()
-        this.$store.dispatch('FETCH_INTERVIEWS')
-        .then(()=>{
-            this.changeIsLoading()
+      this.$store
+        .dispatch("FETCH_MORE_INTERVIEWS", nextUrl)
+        .then(() => {
+          this.changeIsLoading();
         })
-        .catch(()=>{
-            this.changeIsLoading();
+        .catch(err => {
+          this.changeIsLoading();
         });
-    },
-
-    updated(){
-        bus.$emit('execute:highlight');
-    },
-
-    methods:{
-        changeIsLoading(){
-            this.isLoading = !this.isLoading;
-        },
-
-        loadMore() {
-            const nextUrl = this.$store.state.interviewModule.nextUrl;
-            
-            this.busy = true;
-            this.changeIsLoading();
-
-            this.$store.dispatch('FETCH_MORE_INTERVIEWS',nextUrl)
-                .then(()=>{
-                    this.changeIsLoading();
-                })
-                .catch(err => {
-                    this.changeIsLoading();
-                });
-            this.busy = false;        
-        }
+      this.busy = false;
     }
-}
+  }
+};
 </script>
 
 <style scoped>
-.question_list{
-    padding: 0;
-    list-style: none;
+.question_list {
+  list-style: none;
+  padding: 0 14.3%;
 }
-.question_item{
-    margin: 0 30px;
-    margin-bottom: 70px;
+.question_item {
+  margin-bottom: 70px;
 }
-.tags_dropdown{
-    width:200px;
-    height: 100px;
-    color: #419FE6;
+.tags_dropdown {
+  width: 200px;
+  height: 100px;
+  color: #419fe6;
 }
 
 /* Extra small devices (portrait phones, less than 576px) */
-@media (max-width: 575.98px) { 
-    .question_item{
-        margin: 30px 0;
-    }
- }
-
-/* Small devices (landscape phones, 576px and up) */
-@media (min-width: 576px) and (max-width: 767.98px) {  
-    .question_item{
-        margin: 0;
-    }
+@media (max-width: 575.98px) {
+  .question_list {
+    padding: 0;
+  }
 }
 
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) and (max-width: 767.98px) {
+  .question_list {
+    padding: 0;
+  }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 991.98px) {
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+}
 </style>
