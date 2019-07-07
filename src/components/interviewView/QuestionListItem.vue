@@ -2,7 +2,7 @@
   <mdb-card class="question_card">
       <div class="card_header">
           <div class="stamp_container">
-              <img src="../../assets/envelopeGray.svg">
+              <img src="../../assets/envelopeGray.svg" alt="편지 봉투 사진">
           </div>
           <div class="tag_container">
               <mdb-badge class="tag_badge" pill color="indigo" v-for="tag in interview.tags" :key="tag">{{ tag }}</mdb-badge>
@@ -11,7 +11,7 @@
     <mdb-card-body>
       <mdb-card-title class="interview_title"><router-link :to="`/interviews/${interview.id}`">{{ interview.question}}</router-link></mdb-card-title>
         <mdb-btn color="info-color" @click="show=!show">ANSWER >></mdb-btn>
-        <div class="mark_down_body">
+        <div class="markdown-body">
             <VueShowdown ref="answer" v-show="show" :markdown="`${interview.answer}`"/>
         </div>
     </mdb-card-body>
@@ -46,6 +46,7 @@ export default {
 }
 </script>
 <style scoped>
+@import url('../../../public/github-markdown.css');
 
 .interview_title a{
     color: black;
