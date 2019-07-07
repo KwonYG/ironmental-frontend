@@ -15,7 +15,7 @@
         </div>
         <div class="form_box">
           <form v-on:submit.prevent="onSubmit">
-            <mdb-icon color="white" far icon="envelope" size="2x" alt="이메일 아이콘"></mdb-icon>
+            <mdb-icon class="email_icon" color="white" far icon="envelope" size="2x" alt="이메일 아이콘"></mdb-icon>
             <input
               type="email"
               title="이메일 주소"
@@ -115,20 +115,11 @@ label {
   justify-content: center;
   align-items: center;
   height: 800px;
-  /* background-color:#AF2030; */
-
-  /* background: linear-gradient( to bottom, #0174E8, #24B3B5 ); */
   background: linear-gradient(to bottom, #006ef0, #00e1f0);
   color: #fff;
   text-align: center;
   border-bottom-left-radius: 50% 20%;
   border-bottom-right-radius: 50% 20%;
-  /* clip-path: polygon(
-        0 0,
-        100% 0,
-        100% 100%,
-        0 calc(100% - 5vw)
-    ); */
 }
 .form_section_intro .intro_title {
   font-weight: 800;
@@ -139,14 +130,16 @@ label {
 .form_box form {
   display: flex;
 }
-.email_label {
-  margin-right: 10px;
-}
 .envelope_img {
   margin-bottom: 60px;
   width: 250px;
   height: 250px;
 }
+
+.email_icon {
+  margin-right: 10px;
+}
+
 .submit_btn {
   margin: 0 0 0 10px;
   line-height: 8px;
