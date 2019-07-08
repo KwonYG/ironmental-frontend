@@ -11,16 +11,19 @@
           color="indigo"
           v-for="tag in interview.tags"
           :key="tag"
-          >{{ tag }}</mdb-badge>
+        >{{ tag }}</mdb-badge>
       </div>
     </div>
     <mdb-card-body>
       <mdb-card-title class="interview_title">
-        <router-link :to="`/interviews/${interview.id}`">{{ interview.question}}</router-link>
+        <router-link :to="`/interviews/${interview.id}`">{{interview.question}}</router-link>
       </mdb-card-title>
-      <mdb-btn color="info-color" @click="show = !show">ANSWER >></mdb-btn>
+      <mdb-btn class="answer_btn" color="info-color" @click="show = !show">
+        ANSWER
+        <mdb-icon icon="angle-down" size="lg" alt="아랫방향 앵글 아이콘" />
+      </mdb-btn>
       <div class="markdown-body">
-        <VueShowdown ref="answer" v-show="show" :markdown="`${interview.answer}`" />
+        <VueShowdown v-show="show" :markdown="`${interview.answer}`" />
       </div>
     </mdb-card-body>
   </mdb-card>
@@ -28,7 +31,14 @@
 
 <script>
 import { VueShowdown } from "vue-showdown";
-import { mdbCard, mdbCardBody, mdbCardTitle, mdbBtn, mdbBadge } from "mdbvue";
+import {
+  mdbCard,
+  mdbCardBody,
+  mdbCardTitle,
+  mdbBtn,
+  mdbIcon,
+  mdbBadge
+} from "mdbvue";
 
 export default {
   components: {
@@ -36,6 +46,7 @@ export default {
     mdbCardBody,
     mdbCardTitle,
     mdbBtn,
+    mdbIcon,
     mdbBadge,
     VueShowdown
   },
@@ -83,8 +94,18 @@ export default {
   margin-left: 20px;
 }
 
+.answer_btn {
+  box-shadow: none;
+  border: 1px solid #566270;
+  border-radius: 5px;
+}
+
 .tag_badge {
   margin: 0 2px;
+}
+
+.markdown-body {
+  margin-top: 15px;
 }
 
 /* Extra small devices (portrait phones, less than 576px) */
