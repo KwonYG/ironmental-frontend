@@ -18,7 +18,7 @@
         <question-list-item :interview="interview"></question-list-item>
       </li>
     </ul>
-    <!-- <spinner v-if="isLoading"></spinner> -->
+    <spinner class="spinner" v-if="isLoading"></spinner>
   </div>
 </template>
 
@@ -28,13 +28,13 @@ import infiniteScroll from "vue-infinite-scroll";
 import bus from "../../utils/bus.js";
 import DropDown from "./DropDown.vue";
 import QuestionListItem from "./QuestionListItem.vue";
-// import Spinner from '../Spinner.vue';
+import Spinner from "../Spinner.vue";
 
 export default {
   components: {
     DropDown,
-    QuestionListItem
-    // Spinner
+    QuestionListItem,
+    Spinner
   },
 
   directives: {
@@ -80,16 +80,7 @@ export default {
       const nextUrl = this.$store.state.interviewModule.nextUrl;
 
       this.busy = true;
-      this.changeIsLoading();
-
-      this.$store
-        .dispatch("FETCH_MORE_INTERVIEWS", nextUrl)
-        .then(() => {
-          this.changeIsLoading();
-        })
-        .catch(err => {
-          this.changeIsLoading();
-        });
+      this.$store.dispatch("FETCH_MORE_INTERVIEWS", nextUrl);
       this.busy = false;
     }
   }
@@ -104,12 +95,16 @@ export default {
 .question_item {
   margin-bottom: 70px;
 }
+
 .tags_dropdown {
   width: 200px;
   height: 100px;
   color: #419fe6;
 }
 
+.spinner {
+  margin-top: 10px;
+}
 /* Extra small devices (portrait phones, less than 576px) */
 @media (max-width: 575.98px) {
   .question_list {
