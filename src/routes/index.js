@@ -1,63 +1,57 @@
-import Vue from 'vue'
-import Router from 'vue-router'
-import { store } from '../store/index.js';
+import Vue from "vue";
+import Router from "vue-router";
+import { interviewItemGuard } from "./guard.js";
 
-import HomeView from '../views/HomeView.vue'
-import InterviewView from '../views/InterviewView.vue'
-import OneInterviewView from '../views/OneInterviewView.vue';
-import ConfirmView from '../views/ConfirmView.vue';
-import ErrorView from '../views/ErrorView.vue';
+// View components
+import HomeView from "../views/HomeView.vue";
+import InterviewView from "../views/InterviewView.vue";
+import OneInterviewView from "../views/OneInterviewView.vue";
+import ConfirmView from "../views/ConfirmView.vue";
+import ErrorView from "../views/ErrorView.vue";
 
 Vue.use(Router);
 
 export const router = new Router({
-    mode: 'history',
-    base: process.env.BASE_URL,
-    routes: [
-        {
-            path: '/',
-            redirect: '/home'
-        },
-        
-        {
-            path: '/home',
-            name: 'home',
-            component: HomeView
-        },
+  mode: "history",
+  base: process.env.BASE_URL,
+  routes: [
+    {
+      path: "/",
+      redirect: "/home"
+    },
 
-        {
-            path: '/interviews',
-            name: 'interviews',
-            component: InterviewView
-        },
+    {
+      path: "/home",
+      name: "home",
+      component: HomeView
+    },
 
-        {
-            path: '/interviews/:id',
-            name: 'interview',
-            component: OneInterviewView,
-            beforeEnter: (to, from, next) => {
-                store.dispatch('FETCH_INTERVIEW_BY_ID', { id: to.params.id })
-                    .then(() => {
-                        next();
-                    })
-                    .catch(() => {
-                        next({
-                            name: 'notFound'
-                        })
-                    });
-            }
-        },
+    {
+      path: "/interviews",
+      name: "interviews",
+      component: InterviewView
+    },
 
-        {
-            path: '/auth/confirm/:confirmCode',
-            name: 'confirm',
-            component: ConfirmView
-        },
+    {
+      path: "/interviews/:id",
+      name: "interview",
+      component: OneInterviewView,
+      beforeEnter: interviewItemGuard
+    },
 
-        {
-            path: '*',
-            name: 'notFound',
-            component: ErrorView
-        }
-    ],
-})
+    {
+      path: "/auth/confirm/:confirmCode",
+      name: "confirm",
+      component: ConfirmView
+    },
+
+    {
+      path: "*",
+      name: "notFound",
+      component: ErrorView
+    }
+  ],
+  scrollBehavior(to, from, savedPosition) {
+    return { x: 0, y: 0 };
+  }
+});
