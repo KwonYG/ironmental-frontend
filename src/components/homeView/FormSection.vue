@@ -52,13 +52,6 @@ export default {
     };
   },
 
-  computed: {
-    getSubResultTest() {
-      const result = this.$store.state.subModule.subResult;
-      return console.log("getSubResultTest", result);
-    }
-  },
-
   methods: {
     emailValid(email) {
       const regExp = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,24}))$/i;
@@ -67,19 +60,9 @@ export default {
     },
 
     getResult() {
-      const result = this.$store.state.subModule.subResult;
-      console.log(result);
-      if (result.isSub === true && result.isCertify === true) {
-        return swal("구독 중", result.message, "success");
-      }
+      const subResult = this.$store.state.subModule.subResult;
 
-      if (result.isCertify === false && result.isSub === true) {
-        return swal("미인증 구독자", result.message, "error");
-      }
-
-      if (result.isCertify === false) {
-        return swal("구독 완료!", result.message, "success");
-      }
+      return swal(subResult.userState, subResult.message, subResult.alertType);
     },
 
     onSubmit() {
