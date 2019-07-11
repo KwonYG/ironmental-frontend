@@ -1,19 +1,15 @@
 <template>
-<div class="d-flex justify-content-center">
+  <div class="d-flex justify-content-center">
     <div class="spinner-grow text-primary" style="width: 3rem; height: 3rem;" role="status">
-        <span class="sr-only">Loading...</span>
-    </div>    
-</div>
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
 </template>
 
 <script>
 export default {
-    props:{
-        status: Boolean,
-    }
-}
+  props: {
+    status: Boolean
+  }
+};
 </script>
-
-<style>
-
-</style>

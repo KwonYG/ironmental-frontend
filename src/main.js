@@ -1,19 +1,19 @@
-import Vue from 'vue'; 
-import 'bootstrap-css-only/css/bootstrap.min.css'; 
-import 'mdbvue/build/css/mdb.css';
-import App from './App.vue'
-import './plugins/index.js';
+import Vue from "vue";
+import "bootstrap-css-only/css/bootstrap.min.css";
+import "mdbvue/build/css/mdb.css";
+import App from "./App.vue";
+import "./plugins/index.js";
 
-import { router } from './routes/index.js';
-import { store } from './store/index.js';
+import { router } from "./routes/index.js";
+import { store } from "./store/index.js";
 
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
 
 new Vue({
   router,
   store,
   render: h => h(App),
-  renderError (h, err) {
-    return h('pre', { style: { color: 'red' }}, err.stack)
+  renderError(h, err) {
+    return h("pre", { style: { color: "red" } }, err.stack);
   }
-}).$mount('#app')
+}).$mount("#app");
