@@ -6,14 +6,14 @@
 </template>
 
 <script>
-import FormSection from '../components/homeView/FormSection.vue';
-import IntroSection from '../components/homeView/IntroSection.vue';
+import FormSection from "../components/homeView/FormSection.vue";
+import IntroSection from "../components/homeView/IntroSection.vue";
 
 export default {
-  name: 'home',
+  name: "home",
   components: {
     FormSection,
-    IntroSection,
+    IntroSection
   }
-}
+};
 </script>
