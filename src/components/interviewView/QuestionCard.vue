@@ -25,12 +25,7 @@
 <script>
 import { VueShowdown } from "vue-showdown";
 import { mapGetters } from "vuex";
-import {
-  mdbCard,
-  mdbCardBody,
-  mdbCardHeader,
-  mdbBadge
-} from "mdbvue";
+import { mdbCard, mdbCardBody, mdbCardHeader, mdbBadge } from "mdbvue";
 import bus from "../../utils/bus.js";
 
 export default {
