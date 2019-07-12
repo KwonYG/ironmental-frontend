@@ -157,6 +157,15 @@ export default {
 }
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) and (max-width: 767.98px) {
+  .intro_section {
+    text-align: center;
+  }
+  .intro_content {
+    display: block;
+  }
+  .intro_description {
+    padding: 50px 30px 20px 30px;
+  }
 }
 
 /* Medium devices (tablets, 768px and up) */
