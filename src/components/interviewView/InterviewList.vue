@@ -15,7 +15,7 @@
         data-aos-offset="100"
         data-aos-easing="ease-out-back"
       >
-        <question-list-item :interview="interview"></question-list-item>
+        <interview-list-item :interview="interview"></interview-list-item>
       </li>
     </ul>
     <spinner class="spinner" v-if="isLoading"></spinner>
@@ -27,13 +27,13 @@ import { mapGetters } from "vuex";
 import infiniteScroll from "vue-infinite-scroll";
 import bus from "../../utils/bus.js";
 import DropDown from "./DropDown.vue";
-import QuestionListItem from "./QuestionListItem.vue";
+import InterviewListItem from "./InterviewListItem.vue";
 import Spinner from "../Spinner.vue";
 
 export default {
   components: {
     DropDown,
-    QuestionListItem,
+    InterviewListItem,
     Spinner
   },
 
