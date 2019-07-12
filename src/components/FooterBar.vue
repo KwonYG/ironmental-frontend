@@ -15,9 +15,6 @@
               <a href="#!">버그 신고</a>
             </li>
             <li class="list-unstyled">
-              <a href="#!">이메일</a>
-            </li>
-            <li class="list-unstyled">
               <a href="#!">공헌하기</a>
             </li>
           </ul>
