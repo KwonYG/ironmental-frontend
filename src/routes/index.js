@@ -2,13 +2,6 @@ import Vue from "vue";
 import Router from "vue-router";
 import { interviewItemGuard } from "./guard.js";
 
-// View components
-import HomeView from "../views/HomeView.vue";
-import InterviewView from "../views/InterviewView.vue";
-import OneInterviewView from "../views/OneInterviewView.vue";
-import ConfirmView from "../views/ConfirmView.vue";
-import ErrorView from "../views/ErrorView.vue";
-
 Vue.use(Router);
 
 export const router = new Router({
@@ -23,32 +16,32 @@ export const router = new Router({
     {
       path: "/home",
       name: "home",
-      component: HomeView
+      component: () => import("../views/HomeView.vue")
     },
 
     {
       path: "/interviews",
       name: "interviews",
-      component: InterviewView
+      component: () => import("../views/InterviewView.vue")
     },
 
     {
       path: "/interviews/:id",
       name: "interview",
-      component: OneInterviewView,
+      component: () => import("../views/OneInterviewView.vue"),
       beforeEnter: interviewItemGuard
     },
 
     {
       path: "/auth/confirm/:confirmCode",
       name: "confirm",
-      component: ConfirmView
+      component: () => import("../views/ConfirmView.vue")
     },
 
     {
       path: "*",
       name: "notFound",
-      component: ErrorView
+      component: () => import("../views/ErrorView.vue")
     }
   ],
   scrollBehavior() {
