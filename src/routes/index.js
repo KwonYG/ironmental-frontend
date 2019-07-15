@@ -1,7 +1,7 @@
 import Vue from "vue";
 import Router from "vue-router";
 import { interviewItemGuard } from "./guard.js";
-import HomeView from '../views/HomeView.vue'
+import HomeView from "../views/HomeView.vue";
 Vue.use(Router);
 
 export const router = new Router({
@@ -36,6 +36,12 @@ export const router = new Router({
       path: "/auth/confirm/:confirmCode",
       name: "confirm",
       component: () => import("../views/ConfirmView.vue")
+    },
+
+    {
+      path: "/subscribers/:subscriberId",
+      name: "cancleSub",
+      component: () => import("../views/CancleView.vue")
     },
 
     {
