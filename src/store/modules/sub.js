@@ -8,23 +8,23 @@ export const subModule = {
       message: "",
       userState: "",
       alertType: ""
-    },
-
-    cancleResult: {
-      status: 500,
-      message: "",
-      isError: false,
     }
+
+    // cancleResult: {
+    //   status: 500,
+    //   message: "",
+    //   isError: false,
+    // }
   },
 
   getters: {
     fetchedSubResult(state) {
       return state.subResult;
-    },
-
-    fetchedCancleResult(state) {
-      return state.cancleResult;
     }
+
+    // fetchedCancleResult(state) {
+    //   return state.cancleResult;
+    // }
   },
 
   mutations: {
@@ -41,11 +41,11 @@ export const subModule = {
       }
 
       state.subResult = subData;
-    },
-
-    SET_CANCLE_RESULT(state, cancleResult) {
-      state.cancleResult = cancleResult;
     }
+
+    // SET_CANCLE_RESULT(state, cancleResult) {
+    //   state.cancleResult = cancleResult;
+    // }
   },
 
   actions: {
@@ -56,15 +56,15 @@ export const subModule = {
           commit("SET_SUB_RESULT", data);
         })
         .catch(err => {});
-    },
-
-    CANCLE_SUBSCRIPTION({ commit }, { subscriberId }) {
-      return sub
-        .RequestCancle({ subscriberId })
-        .then(({ data }) => {
-          commit("SET_CANCLE_RESULT", data);
-        })
-        .catch(err => {});
     }
+
+    // CANCLE_SUBSCRIPTION({ commit }, { subscriberId }) {
+    //   return sub
+    //     .RequestCancle({ subscriberId })
+    //     .then(({ data }) => {
+    //       commit("SET_CANCLE_RESULT", data);
+    //     })
+    //     .catch(err => {});
+    // }
   }
 };
