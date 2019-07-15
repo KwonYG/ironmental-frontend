@@ -38,11 +38,11 @@ export const router = new Router({
       component: () => import("../views/ConfirmView.vue")
     },
 
-    {
-      path: "/subscribers/:subscriberId",
-      name: "cancleSub",
-      component: () => import("../views/CancleView.vue")
-    },
+    // {
+    //   path: "/subscribers/:subscriberId",
+    //   name: "cancleSub",
+    //   component: () => import("../views/CancleView.vue")
+    // },
 
     {
       path: "*",
