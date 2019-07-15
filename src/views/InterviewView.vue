@@ -3,18 +3,18 @@
     <section class="interview_section">
       <h2 class="section_title">인터뷰</h2>
       <div class="interview_container">
-        <question-list></question-list>
+        <interview-list></interview-list>
       </div>
     </section>
   </div>
 </template>
 
 <script>
-import QuestionList from "../components/interviewView/QuestionList.vue";
+import InterviewList from "../components/interviewView/InterviewList.vue";
 
 export default {
   components: {
-    QuestionList
+    InterviewList
   }
 };
 </script>
