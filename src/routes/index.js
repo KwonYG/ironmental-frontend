@@ -1,7 +1,7 @@
 import Vue from "vue";
 import Router from "vue-router";
 import { interviewItemGuard } from "./guard.js";
-
+import HomeView from '../views/HomeView.vue'
 Vue.use(Router);
 
 export const router = new Router({
@@ -16,7 +16,7 @@ export const router = new Router({
     {
       path: "/home",
       name: "home",
-      component: () => import("../views/HomeView.vue")
+      component: HomeView
     },
 
     {
