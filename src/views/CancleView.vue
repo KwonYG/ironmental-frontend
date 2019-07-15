@@ -2,9 +2,9 @@
   <section class="confirm_section" id="confirm_section_id">
     <div class="confirm_container">
       <div class="section_intro">
-        <mdb-icon v-if="authResult.isError" icon="exclamation-circle" class="error_icon" size="5x" />
-        <h2 class="intro_title">{{ authResult.title }}</h2>
-        <p class="intro_content">{{ authResult.message }}</p>
+        <mdb-icon v-if="cancleResult.isError" icon="exclamation-circle" class="error_icon" size="5x" />
+        <h2 class="intro_title">{{ cancleResult.status }} Error</h2>
+        <p class="intro_content">{{ cancleResult.message }}</p>
       </div>
       <div class="content_box"></div>
     </div>
@@ -22,13 +22,13 @@ export default {
 
   computed: {
     ...mapGetters({
-    //   authResult: "fetchedAuthResult"
+      cancleResult: "fetchedCancleResult"
     })
   },
 
   created() {
-    const confirmCode = this.$route.params.confirmCode;
-    this.$store.dispatch("REQUEST_AUTH", { confirmCode });
+    const subscriberId = this.$route.params.subscriberId;
+    this.$store.dispatch("CANCLE_SUBSCRIPTION", { subscriberId });
   }
 };
 </script>

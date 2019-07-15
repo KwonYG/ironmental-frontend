@@ -7,19 +7,19 @@
         <p class="intro_content">어때요 도움이 되셨나요?</p>
       </div>
       <div class="content_box">
-        <question-card></question-card>
+        <interview-card></interview-card>
       </div>
     </div>
   </section>
 </template>
 
 <script>
-import QuestionCard from "../components/interviewView/QuestionCard.vue";
+import InterviewCard from "../components/interviewView/InterviewCard.vue";
 
 export default {
   name: "oneInterview",
   components: {
-    QuestionCard
+    InterviewCard
   }
 };
 </script>
