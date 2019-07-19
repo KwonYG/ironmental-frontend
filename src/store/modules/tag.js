@@ -18,7 +18,6 @@ export const tagModule = {
     },
 
     SET_TAGS(state, tagDatas) {
-      // state.tags = state.tags.concat(tagDatas);
       state.tags = ["all"].concat(tagDatas);
     }
   },

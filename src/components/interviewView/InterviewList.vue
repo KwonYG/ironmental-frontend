@@ -47,7 +47,6 @@ export default {
 
   methods: {
     loadMore($state) {
-      console.log("들어갔다!");
       const nextUrl = this.$store.state.interviewModule.nextUrl;
 
       this.$store.dispatch("FETCH_MORE_INTERVIEWS", nextUrl).then(() => {
