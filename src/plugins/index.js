@@ -2,6 +2,7 @@ import Vue from "vue";
 
 import Multiselect from "vue-multiselect";
 import VueShowdown from "vue-showdown";
+import InfiniteLoading from 'vue-infinite-loading';
 
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -12,6 +13,7 @@ AOS.init({
   animatedClassName: "animated"
 });
 
+Vue.use(InfiniteLoading, { /* options */ });
 Vue.use({
   Multiselect,
   VueShowdown
