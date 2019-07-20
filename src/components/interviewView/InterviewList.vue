@@ -1,12 +1,7 @@
 <template>
   <div class="question_list_container">
     <drop-down></drop-down>
-    <ul
-      class="question_list"
-      v-infinite-scroll="loadMore"
-      infinite-scroll-disabled="busy"
-      infinite-scroll-distance="limit"
-    >
+    <ul class="question_list">
       <li
         class="question_item"
         v-for="interview in interviews"
@@ -17,54 +12,33 @@
       >
         <interview-list-item :interview="interview"></interview-list-item>
       </li>
+      <infinite-loading :identifier="infiniteId" @infinite="loadMore"></infinite-loading>
     </ul>
-    <spinner class="spinner" v-if="isLoading"></spinner>
   </div>
 </template>
 
 <script>
 import { mapGetters } from "vuex";
-import infiniteScroll from "vue-infinite-scroll";
+
 import bus from "../../utils/bus.js";
 import DropDown from "./DropDown.vue";
 import InterviewListItem from "./InterviewListItem.vue";
-import Spinner from "../Spinner.vue";
 
 export default {
   components: {
     DropDown,
-    InterviewListItem,
-    Spinner
-  },
-
-  directives: {
-    infiniteScroll
-  },
-
-  data() {
-    return {
-      limit: 4,
-      busy: false,
-      isLoading: false
-    };
+    InterviewListItem
   },
 
   computed: {
     ...mapGetters({
-      interviews: "fetchedInterviews"
+      interviews: "fetchedInterviews",
+      infiniteId: "fetchedInfiniteId"
     })
   },
 
   created() {
-    this.changeIsLoading();
-    this.$store
-      .dispatch("FETCH_INTERVIEWS")
-      .then(() => {
-        this.changeIsLoading();
-      })
-      .catch(() => {
-        this.changeIsLoading();
-      });
+    this.$store.dispatch("FETCH_INTERVIEWS");
   },
 
   updated() {
@@ -72,16 +46,20 @@ export default {
   },
 
   methods: {
-    changeIsLoading() {
-      this.isLoading = !this.isLoading;
-    },
-
-    loadMore() {
+    loadMore($state) {
       const nextUrl = this.$store.state.interviewModule.nextUrl;
 
-      this.busy = true;
-      this.$store.dispatch("FETCH_MORE_INTERVIEWS", nextUrl);
-      this.busy = false;
+      this.$store.dispatch("FETCH_MORE_INTERVIEWS", nextUrl).then(() => {
+        if (nextUrl != null) {
+          $state.loaded();
+        } else if (nextUrl === null) {
+          $state.complete();
+        }
+      });
+    },
+
+    changeType() {
+      this.infiniteId += 1;
     }
   }
 };
@@ -102,9 +80,6 @@ export default {
   color: #419fe6;
 }
 
-.spinner {
-  margin-top: 10px;
-}
 /* Extra small devices (portrait phones, less than 576px) */
 @media (max-width: 575.98px) {
   .question_list {

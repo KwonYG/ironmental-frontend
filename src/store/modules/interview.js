@@ -4,7 +4,8 @@ export const interviewModule = {
   state: {
     interviewItem: {},
     interviews: {},
-    nextUrl: ""
+    nextUrl: "",
+    infiniteId: +new Date()
   },
 
   getters: {
@@ -14,6 +15,10 @@ export const interviewModule = {
 
     fetchedInterviewItem(state) {
       return state.interviewItem;
+    },
+
+    fetchedInfiniteId(state) {
+      return state.infiniteId;
     }
   },
 
@@ -32,6 +37,10 @@ export const interviewModule = {
 
     SET_NEXT_URL(state, url) {
       state.nextUrl = url;
+    },
+
+    SET_INFINITE_ID(state) {
+      state.infiniteId += 1;
     }
   },
 
@@ -56,8 +65,9 @@ export const interviewModule = {
         .then(({ data }) => {
           commit("SET_INTERVIEWS", data.datas);
           commit("SET_NEXT_URL", data.links.next);
+          commit("SET_INFINITE_ID");
         })
-        .catch(err => {});
+        .catch(err => { });
     },
 
     FETCH_MORE_INTERVIEWS({ commit }, nextUrl) {
@@ -67,7 +77,7 @@ export const interviewModule = {
           commit("ADD_MORE_INTERVIEWS", data.datas);
           commit("SET_NEXT_URL", data.links.next);
         })
-        .catch(err => {});
+        .catch(err => { });
     }
   }
 };
