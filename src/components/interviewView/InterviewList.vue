@@ -80,9 +80,6 @@ export default {
   color: #419fe6;
 }
 
-.spinner {
-  margin-top: 10px;
-}
 /* Extra small devices (portrait phones, less than 576px) */
 @media (max-width: 575.98px) {
   .question_list {

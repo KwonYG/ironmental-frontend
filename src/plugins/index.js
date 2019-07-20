@@ -13,7 +13,11 @@ AOS.init({
   animatedClassName: "animated"
 });
 
-Vue.use(InfiniteLoading, { /* options */ });
+Vue.use(InfiniteLoading, {
+  props: {
+    spinner: 'waveDots',
+  },
+});
 Vue.use({
   Multiselect,
   VueShowdown

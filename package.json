@@ -12,6 +12,7 @@
     "@vue/test-utils": "^1.0.0-beta.29",
     "aos": "^2.3.4",
     "axios": "^0.19.0",
+    "babel-jest": "^24.8.0",
     "babel-plugin-prismjs": "^1.0.2",
     "core-js": "^2.6.5",
     "eslint-config-prettier": "^6.0.0",
@@ -23,7 +24,7 @@
     "sweetalert": "^2.1.2",
     "vue": "^2.6.10",
     "vue-infinite-loading": "^2.4.4",
-    "vue-infinite-scroll": "^2.0.2",
+    "vue-jest": "^3.0.4",
     "vue-multiselect": "^2.1.6",
     "vue-router": "^3.0.3",
     "vue-showdown": "^2.4.1",
@@ -44,6 +45,22 @@
       "plugin:vue/essential",
       "plugin:prettier/recommended",
       "eslint:recommended"
+    ]
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "vue"
+    ],
+    "transform": {
+      ".*\\.(vue)$": "vue-jest",
+      "^.+\\.js$": "<rootDir>/node_modules/babel-jest"
+    },
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "**/*.{js,vue}",
+      "!**/node_modules/**"
     ]
   }
 }
