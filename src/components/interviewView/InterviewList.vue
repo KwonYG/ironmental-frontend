@@ -4,8 +4,8 @@
 		<ul class="question_list">
 			<li
 				class="question_item"
-				v-for="interview in interviews"
-				:key="interview.id"
+				v-for="(interview, $index) in interviews"
+				:key="$index"
 				data-aos="slide-up"
 				data-aos-offset="100"
 				data-aos-easing="ease-out-back"
