@@ -72,6 +72,7 @@ export default {
 .question_list {
 	list-style: none;
 	padding: 0 14.3%;
+	min-height: 720px;
 }
 .question_item {
 	margin-bottom: 70px;
