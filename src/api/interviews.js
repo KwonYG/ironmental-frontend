@@ -1,27 +1,27 @@
-import axios from "axios";
-import { config } from "./config.js";
+import axios from 'axios';
+import { config } from './config.js';
 
 const baseUrl = `${config.reqeustUrl}/interviews`;
 
 function fetchInterviews() {
-  return axios.get(baseUrl);
+	return axios.get(baseUrl);
 }
 
 function fetchInterviewById(id) {
-  return axios.get(`${baseUrl}/${id}`);
+	return axios.get(`${baseUrl}/${id}`);
 }
 
 function fetchSpecificInterviews(tag) {
-  return axios.get(`${baseUrl}?tag=${tag}`);
+	return axios.get(`${baseUrl}?tag=${tag}`);
 }
 
 function fetchMoreInterviews(nextUrl) {
-  return axios.get(nextUrl);
+	return axios.get(nextUrl);
 }
 
 export const interview = {
-  fetchInterviews,
-  fetchInterviewById,
-  fetchMoreInterviews,
-  fetchSpecificInterviews
+	fetchInterviews,
+	fetchInterviewById,
+	fetchMoreInterviews,
+	fetchSpecificInterviews,
 };
