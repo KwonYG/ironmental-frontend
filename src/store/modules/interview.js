@@ -28,11 +28,15 @@ export const interviewModule = {
 		},
 
 		SET_INTERVIEWS(state, interviewDatas) {
-			state.interviews = interviewDatas;
+			// state.interviews = interviewDatas;
+			state.interviews = interviewDatas.datas;
+
+			state.nextUrl = interviewDatas.links.next;
 		},
 
 		ADD_MORE_INTERVIEWS(state, interviewDatas) {
-			state.interviews = state.interviews.concat(interviewDatas);
+			state.interviews = state.interviews.concat(interviewDatas.datas);
+			state.nextUrl = interviewDatas.links.next;
 		},
 
 		SET_NEXT_URL(state, url) {
@@ -50,10 +54,12 @@ export const interviewModule = {
 				.fetchInterviews()
 				.then(({ data }) => {
 					// commit 두번 쓰지말고 한번 쓰게 로직변경해보기
-					commit('SET_INTERVIEWS', data.datas);
-					commit('SET_NEXT_URL', data.links.next);
+
+					commit('SET_INTERVIEWS', data);
+					// commit('SET_INTERVIEWS', data.datas);
+					// commit('SET_NEXT_URL', data.links.next);
 				})
-				.catch(err => {});
+				.catch(err => { });
 		},
 
 		FETCH_INTERVIEW_BY_ID({ commit }, { id }) {
@@ -66,21 +72,23 @@ export const interviewModule = {
 			return interview
 				.fetchSpecificInterviews(tag)
 				.then(({ data }) => {
-					commit('SET_INTERVIEWS', data.datas);
-					commit('SET_NEXT_URL', data.links.next);
+					commit('SET_INTERVIEWS', data);
+					// commit('SET_INTERVIEWS', data.datas);
+					// commit('SET_NEXT_URL', data.links.next);
 					commit('SET_INFINITE_ID');
 				})
-				.catch(err => {});
+				.catch(err => { });
 		},
 
 		FETCH_MORE_INTERVIEWS({ commit }, nextUrl) {
 			return interview
 				.fetchMoreInterviews(nextUrl)
 				.then(({ data }) => {
-					commit('ADD_MORE_INTERVIEWS', data.datas);
-					commit('SET_NEXT_URL', data.links.next);
+					commit('ADD_MORE_INTERVIEWS', data);
+					// commit('ADD_MORE_INTERVIEWS', data.datas);
+					// commit('SET_NEXT_URL', data.links.next);
 				})
-				.catch(err => {});
+				.catch(err => { });
 		},
 	},
 };
