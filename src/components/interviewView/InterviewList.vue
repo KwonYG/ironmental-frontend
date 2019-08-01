@@ -40,7 +40,7 @@ export default {
 		}),
 	},
 
-	beforeCreate() {
+	created() {
 		this.$store.dispatch('FETCH_INTERVIEWS');
 	},
 

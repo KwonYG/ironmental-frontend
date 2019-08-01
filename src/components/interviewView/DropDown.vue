@@ -1,6 +1,6 @@
 <template>
 	<div class="tags_dropdown">
-		<label class="typo__label">Select Tag</label>
+		<label class="typo__label"> Tags</label>
 		<multiselect
 			v-model="value"
 			:options="tags"
