@@ -4,11 +4,11 @@
 			<mdb-card-header class="card_header" color="info-color">
 				<mdb-badge
 					class="tag_badge"
-					v-for="tag in tags"
+					v-for="tag in interview.tags"
 					:key="tag.name"
 					pill
-					:color="tag.color"
-					>{{ tag.name }}</mdb-badge
+					color="indigo"
+					>{{ tag }}</mdb-badge
 				>
 			</mdb-card-header>
 			<mdb-card-body>
@@ -43,8 +43,6 @@ export default {
 		return {
 			loadingStatus: false,
 			contentHtml: '',
-			tagColors: ['indigo', 'purple', 'orange', 'green', 'pink', 'badge-light'],
-			tags: [],
 		};
 	},
 
@@ -54,30 +52,8 @@ export default {
 		}),
 	},
 
-	methods: {
-		setTagColors() {
-			const tagDatas = this.interview.tags;
-			const colorLength = this.tagColors.length;
-
-			let index = 0;
-			tagDatas.forEach(tag => {
-				if (index === colorLength - 1) {
-					index = 0;
-				}
-
-				this.tags.push({
-					name: tag,
-					color: this.tagColors[index],
-				});
-
-				index++;
-			});
-		},
-	},
-
 	mounted() {
 		bus.$emit('execute:highlight');
-		this.setTagColors();
 	},
 };
 </script>
