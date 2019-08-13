@@ -6,12 +6,13 @@ import InterviewView from '../views/InterviewView.vue';
 import OneInterviewView from '../views/OneInterviewView.vue';
 import ConfirmView from '../views/ConfirmView.vue';
 import ErrorView from '../views/ErrorView.vue';
+import CancleView from '../views/CancleView.vue';
 
 Vue.use(Router);
 
 export const router = new Router({
 	mode: 'history',
-	base: process.env.BASE_URL,
+
 	routes: [
 		{
 			path: '/',
@@ -43,11 +44,11 @@ export const router = new Router({
 			component: ConfirmView,
 		},
 
-		// {
-		//   path: "/subscribers/:subscriberId",
-		//   name: "cancleSub",
-		//   component: () => import("../views/CancleView.vue")
-		// },
+		{
+			path: '/subscribers/:subscriberId',
+			name: 'cancleSub',
+			component: CancleView,
+		},
 
 		{
 			path: '*',

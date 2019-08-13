@@ -17,9 +17,9 @@
 		</div>
 		<mdb-card-body>
 			<mdb-card-title class="interview_title">
-				<router-link :to="`/interviews/${interview.id}`">
-					{{ interview.question }}
-				</router-link>
+				<router-link :to="`/interviews/${interview.id}`">{{
+					interview.question
+				}}</router-link>
 			</mdb-card-title>
 			<mdb-btn class="answer_btn" color="info-color" @click="show = !show">
 				ANSWER
