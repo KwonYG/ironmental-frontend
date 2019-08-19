@@ -1,11 +1,16 @@
 <template>
 	<section class="confirm_section" id="confirm_section_id">
 		<div class="confirm_container">
-			<!-- <div class="section_intro">
-        <mdb-icon v-if="cancleResult.isError" icon="exclamation-circle" class="error_icon" size="5x" />
-        <h2 class="intro_title">{{ cancleResult.status }} </h2>
-        <p class="intro_content">{{ cancleResult.message }}</p>
-      </div>-->
+			<div class="section_intro">
+				<mdb-icon
+					v-if="cancleResult.isError"
+					icon="exclamation-circle"
+					class="error_icon"
+					size="5x"
+				/>
+				<h2 class="intro_title">{{ cancleResult.status }}</h2>
+				<p class="intro_content">{{ cancleResult.message }}</p>
+			</div>
 			<div class="content_box"></div>
 		</div>
 	</section>
@@ -20,16 +25,16 @@ export default {
 		mdbIcon,
 	},
 
-	// computed: {
-	//   ...mapGetters({
-	//     cancleResult: "fetchedCancleResult"
-	//   })
-	// },
+	computed: {
+		...mapGetters({
+			cancleResult: 'fetchedCancleResult',
+		}),
+	},
 
-	// created() {
-	//   const subscriberId = this.$route.params.subscriberId;
-	//   this.$store.dispatch("CANCLE_SUBSCRIPTION", { subscriberId });
-	// }
+	created() {
+		const subscriberId = this.$route.params.subscriberId;
+		this.$store.dispatch('CANCLE_SUBSCRIPTION', { subscriberId });
+	},
 };
 </script>
 
