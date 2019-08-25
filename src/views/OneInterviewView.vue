@@ -53,6 +53,7 @@ label {
 
 .content_box {
 	margin: 0 auto;
+	max-width: 850px;
 	padding: 30px;
 }
 
