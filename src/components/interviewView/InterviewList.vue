@@ -22,7 +22,6 @@
 
 <script>
 import { mapGetters } from 'vuex';
-
 import bus from '../../utils/bus.js';
 import DropDown from './DropDown.vue';
 import InterviewListItem from './InterviewListItem.vue';
@@ -71,9 +70,12 @@ export default {
 <style scoped>
 .question_list {
 	list-style: none;
+	margin: 0 auto;
 	padding: 0 14.3%;
+	max-width: 1200px;
 	min-height: 720px;
 }
+
 .question_item {
 	margin-bottom: 70px;
 }
