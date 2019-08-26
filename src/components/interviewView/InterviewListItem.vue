@@ -17,9 +17,11 @@
 		</div>
 		<mdb-card-body>
 			<mdb-card-title class="interview_title">
-				<router-link :to="`/interviews/${interview.id}`">{{
-					interview.question
-				}}</router-link>
+				<a
+					:href="`https://ironmental.net/interviews/${interview.id}`"
+					target="_blank"
+					>{{ interview.question }}</a
+				>
 			</mdb-card-title>
 			<mdb-btn class="answer_btn" color="info-color" @click="show = !show">
 				ANSWER
