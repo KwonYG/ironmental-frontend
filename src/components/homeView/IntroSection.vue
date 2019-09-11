@@ -3,7 +3,7 @@
 		<div class="intro_description">
 			<h2 class="intro_title">WELCOME TO IRONMENTAL</h2>
 			<p>
-				가볍게 개발상식을 접해보고 싶으신가요?
+				가볍게 개발 상식을 접해보고 싶으신가요?
 				<br />지금 바로 받아보세요!
 			</p>
 		</div>
@@ -21,7 +21,7 @@
 				</div>
 				<p class="item_content">
 					구독신청을 해주세요.
-					<br />이메일을 통해 개발상식 키워드를 보내드립니다.
+					<br />이메일을 통해 개발 상식 키워드를 보내드립니다.
 				</p>
 			</div>
 			<div
