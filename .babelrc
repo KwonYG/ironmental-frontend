@@ -12,7 +12,8 @@
           "markup",
           "python",
           "bash",
-          "java"
+          "java",
+          "typescript"
         ],
         "css": true
       }
