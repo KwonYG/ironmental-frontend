@@ -39,7 +39,7 @@ export const router = new Router({
 		},
 
 		{
-			path: '/auth/confirm/:confirmCode',
+			path: '/auth/confirm/:subscriberId',
 			name: 'confirm',
 			component: ConfirmView,
 		},
