@@ -14,7 +14,8 @@
 					<h2 class="intro_title">매주 개발 상식 키워드를 보내드립니다!</h2>
 					<!-- <h2 class="intro_title">매주, 개발상식을 보내드립니다!</h2> -->
 					<p class="intro_content">
-						if isFull(<span class="kr_content">개발 상식</span>) { you = "IronMental" }
+						if isFull(<span class="kr_content">개발 상식</span>) { you =
+						"IronMental" }
 					</p>
 				</div>
 				<div class="form_box">
