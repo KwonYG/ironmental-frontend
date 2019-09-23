@@ -46,9 +46,9 @@ export const authModule = {
 	},
 
 	actions: {
-		REQUEST_AUTH({ commit }, { confirmCode }) {
+		REQUEST_AUTH({ commit }, { subscriberId }) {
 			return auth
-				.RequestToAuth({ confirmCode })
+				.RequestToAuth({ subscriberId })
 				.then(res => {
 					const statusCode = res.status;
 					commit('SET_AUTH_RESULT', statusCode);

@@ -32,8 +32,8 @@ export default {
 	},
 
 	created() {
-		const confirmCode = this.$route.params.confirmCode;
-		this.$store.dispatch('REQUEST_AUTH', { confirmCode });
+		const subscriberId = this.$route.params.subscriberId;
+		this.$store.dispatch('REQUEST_AUTH', { subscriberId });
 	},
 };
 </script>
