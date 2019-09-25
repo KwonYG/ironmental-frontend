@@ -69,30 +69,30 @@ export default {
 		};
 	},
 
-	created() {
-		this.setTagColors();
-	},
+	// created() {
+	// 	this.setTagColors();
+	// },
 
-	methods: {
-		setTagColors() {
-			const tagDatas = this.interview.tags;
-			const colorLength = this.tagColors.length;
+	// methods: {
+	// 	setTagColors() {
+	// 		const tagDatas = this.interview.tags;
+	// 		const colorLength = this.tagColors.length;
 
-			let index = 0;
-			tagDatas.forEach(tag => {
-				if (index === colorLength - 1) {
-					index = 0;
-				}
+	// 		let index = 0;
+	// 		tagDatas.forEach(tag => {
+	// 			if (index === colorLength - 1) {
+	// 				index = 0;
+	// 			}
 
-				this.tags.push({
-					name: tag,
-					color: this.tagColors[index],
-				});
+	// 			this.tags.push({
+	// 				name: tag,
+	// 				color: this.tagColors[index],
+	// 			});
 
-				index++;
-			});
-		},
-	},
+	// 			index++;
+	// 		});
+	// 	},
+	// },
 };
 </script>
 <style scoped>
