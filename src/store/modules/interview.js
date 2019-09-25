@@ -3,9 +3,8 @@ import { interview } from '../../api/interviews.js';
 export const interviewModule = {
 	state: {
 		interviewItem: {},
-		interviews: {},
+		interviews: [],
 		nextUrl: '',
-		infiniteId: +new Date(),
 	},
 
 	getters: {
@@ -15,10 +14,6 @@ export const interviewModule = {
 
 		fetchedInterviewItem(state) {
 			return state.interviewItem;
-		},
-
-		fetchedInfiniteId(state) {
-			return state.infiniteId;
 		},
 	},
 
@@ -59,7 +54,7 @@ export const interviewModule = {
 					// commit('SET_INTERVIEWS', data.datas);
 					// commit('SET_NEXT_URL', data.links.next);
 				})
-				.catch(err => { });
+				.catch(err => {});
 		},
 
 		FETCH_INTERVIEW_BY_ID({ commit }, { id }) {
@@ -73,11 +68,8 @@ export const interviewModule = {
 				.fetchSpecificInterviews(tag)
 				.then(({ data }) => {
 					commit('SET_INTERVIEWS', data);
-					// commit('SET_INTERVIEWS', data.datas);
-					// commit('SET_NEXT_URL', data.links.next);
-					commit('SET_INFINITE_ID');
 				})
-				.catch(err => { });
+				.catch(err => {});
 		},
 
 		FETCH_MORE_INTERVIEWS({ commit }, nextUrl) {
@@ -85,10 +77,8 @@ export const interviewModule = {
 				.fetchMoreInterviews(nextUrl)
 				.then(({ data }) => {
 					commit('ADD_MORE_INTERVIEWS', data);
-					// commit('ADD_MORE_INTERVIEWS', data.datas);
-					// commit('SET_NEXT_URL', data.links.next);
 				})
-				.catch(err => { });
+				.catch(err => {});
 		},
 	},
 };
