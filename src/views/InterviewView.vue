@@ -49,12 +49,17 @@ export default {
 	},
 
 	created() {
+		bus.$on('clickTag', this.changeType);
 		this.$store.dispatch('FETCH_INTERVIEWS');
 		this.$store.dispatch('FETCH_TAGS');
 	},
 
 	updated() {
 		bus.$emit('execute:highlight');
+	},
+
+	beforeDestroy() {
+		bus.$off('clickTag', this.changeType);
 	},
 
 	methods: {
@@ -77,7 +82,9 @@ export default {
 			}, 700);
 		},
 
-		changeType() {
+		changeType(tag) {
+			window.scrollTo(0, 0);
+			this.value = tag;
 			this.infiniteId += 1;
 		},
 	},

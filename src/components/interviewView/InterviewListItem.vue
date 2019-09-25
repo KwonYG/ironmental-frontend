@@ -11,8 +11,11 @@
 					color="indigo"
 					v-for="(tag, $index) in interview.tags"
 					:key="$index"
-					>{{ tag }}</mdb-badge
 				>
+					<button class="tag_btn" @click="loadClickedTagDatas(tag)">
+						{{ tag }}
+					</button>
+				</mdb-badge>
 			</div>
 		</div>
 		<mdb-card-body>
@@ -35,6 +38,7 @@
 </template>
 
 <script>
+import bus from '../../utils/bus.js';
 import { VueShowdown } from 'vue-showdown';
 import {
 	mdbCard,
@@ -67,6 +71,13 @@ export default {
 			tagColors: ['indigo', 'purple', 'orange', 'green', 'pink', 'badge-light'],
 			tags: [],
 		};
+	},
+
+	methods: {
+		loadClickedTagDatas(tag) {
+			this.$store.dispatch('UPDATE_VALUE_ACTION', { value: tag });
+			bus.$emit('clickTag', tag);
+		},
 	},
 
 	// created() {
@@ -133,6 +144,16 @@ export default {
 
 .tag_badge {
 	margin: 0 2px;
+}
+
+.tag_btn {
+	background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
 }
 
 .markdown-body {
