@@ -15,6 +15,9 @@
 						@select="asyncFind"
 					></multiselect>
 				</div>
+				<div class="spinner_container">
+					<spinner v-if="loading" class="loading_spinner"></spinner>
+				</div>
 				<interview-list :interviews="interviews"></interview-list>
 				<infinite-loading
 					:identifier="infiniteId"
@@ -29,16 +32,22 @@
 import { mapGetters } from 'vuex';
 import Multiselect from 'vue-multiselect';
 import bus from '../utils/bus.js';
+import Spinner from '../components/Spinner.vue';
 import InterviewList from '../components/interviewView/InterviewList.vue';
 
 export default {
 	components: {
-		InterviewList,
 		Multiselect,
+		Spinner,
+		InterviewList,
 	},
 
 	data() {
-		return { infiniteId: +new Date(), value: '' };
+		return {
+			loading: false,
+			infiniteId: +new Date(),
+			value: '',
+		};
 	},
 
 	computed: {
@@ -50,7 +59,10 @@ export default {
 
 	created() {
 		bus.$on('clickTag', this.changeType);
-		this.$store.dispatch('FETCH_INTERVIEWS');
+		this.loading = true;
+		this.$store.dispatch('FETCH_INTERVIEWS').then(() => {
+			this.loading = false;
+		});
 		this.$store.dispatch('FETCH_TAGS');
 	},
 
@@ -95,6 +107,9 @@ export default {
 .multiselect {
 	width: 250px;
 	margin-bottom: 50px;
+}
+.spinner_container {
+	text-align: center;
 }
 .interview_section {
 	background-color: #e2f6fe;
