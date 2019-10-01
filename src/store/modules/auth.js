@@ -21,7 +21,7 @@ export const authModule = {
 
 			if (statusCode === 200) {
 				authResult.title = '인증이 완료되었습니다!';
-				authResult.message = '매주 이메일을 통해 인터뷰를 보내드립니다.';
+				authResult.message = '매주 이메일을 통해 키워드를 보내드립니다.';
 				authResult.isError = false;
 			} else if (statusCode === 400) {
 				// 형식이 잘못된 인증코드
