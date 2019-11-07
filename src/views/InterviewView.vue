@@ -3,17 +3,30 @@
 		<section class="interview_section">
 			<h2 class="section_title">인터뷰</h2>
 			<div class="interview_container">
-				<div class="tags_dropdown">
-					<label class="typo__label">Tags</label>
-					<multiselect
-						v-model="value"
-						:options="tags"
-						:searchable="true"
-						:close-on-select="true"
-						:show-labels="false"
-						placeholder="Pick a tag"
-						@select="asyncFind"
-					></multiselect>
+				<div class="util_container">
+					<div class="tags_dropdown">
+						<label class="typo_label">Tags</label>
+						<multiselect
+							v-model="value"
+							:options="tags"
+							:searchable="true"
+							:close-on-select="true"
+							:show-labels="false"
+							placeholder="Pick a tag"
+							@select="asyncFind"
+						></multiselect>
+					</div>
+
+					<mdb-form-inline>
+						<mdbIcon icon="search" size="lg" />
+						<br />
+						<input
+							class="form-control mr-sm-2"
+							type="text"
+							placeholder="Search"
+							aria-label="Search"
+						/>
+					</mdb-form-inline>
 				</div>
 				<div class="spinner_container">
 					<spinner v-if="loading" class="loading_spinner"></spinner>
@@ -29,6 +42,7 @@
 </template>
 
 <script>
+import { mdbIcon, mdbFormInline } from 'mdbvue';
 import { mapGetters } from 'vuex';
 import Multiselect from 'vue-multiselect';
 import bus from '../utils/bus.js';
@@ -40,6 +54,8 @@ export default {
 		Multiselect,
 		Spinner,
 		InterviewList,
+		mdbIcon,
+		mdbFormInline,
 	},
 
 	data() {
@@ -104,16 +120,38 @@ export default {
 </script>
 
 <style>
-.multiselect {
-	width: 250px;
+.util_container {
+	display: flex;
+	justify-content: space-between;
 	margin-bottom: 50px;
 }
+
+/* 검색 인풋 */
+.util_container .form-inline {
+	1display: inline-block;
+}
+
+.util_container .form-inline i {
+	1margin-bottom: 13px;
+	margin-right: 10px;
+}
+
+.util_container .form-inline input {
+	min-height: 40px;
+}
+
+.util_container .multiselect {
+	width: 250px;
+}
+
 .spinner_container {
 	text-align: center;
 }
+
 .interview_section {
 	background-color: #e2f6fe;
 }
+
 .section_title {
 	display: none;
 }
