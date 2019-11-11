@@ -75,7 +75,7 @@ export default {
 
 	methods: {
 		loadClickedTagDatas(tag) {
-			this.$store.dispatch('UPDATE_VALUE_ACTION', { value: tag });
+			this.$store.dispatch('UPDATE_SELECTED_TAG', { value: tag });
 			bus.$emit('clickTag', tag);
 		},
 	},

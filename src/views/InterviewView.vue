@@ -92,7 +92,7 @@ export default {
 
 	methods: {
 		asyncFind(actionName) {
-			this.$store.dispatch('UPDATE_VALUE_ACTION', { value: actionName });
+			this.$store.dispatch('UPDATE_SELECTED_TAG', { value: actionName });
 			this.changeType();
 		},
 

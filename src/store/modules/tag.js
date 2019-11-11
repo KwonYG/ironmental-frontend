@@ -2,7 +2,7 @@ import { tags } from '../../api/tags.js';
 
 export const tagModule = {
 	state: {
-		value: 'all',
+		selectedTag: 'all',
 		tags: ['all'],
 	},
 
@@ -13,8 +13,8 @@ export const tagModule = {
 	},
 
 	mutations: {
-		UPDATE_VALUE(state, valueData) {
-			state.value = valueData;
+		UPDATE_SELECTED_TAG(state, selectedTagData) {
+			state.selectedTag = selectedTagData;
 		},
 
 		SET_TAGS(state, tagDatas) {
@@ -34,8 +34,8 @@ export const tagModule = {
 				});
 		},
 
-		UPDATE_VALUE_ACTION({ commit, dispatch }, { value }) {
-			commit('UPDATE_VALUE', value);
+		UPDATE_SELECTED_TAG({ commit, dispatch }, { value }) {
+			commit('UPDATE_SELECTED_TAG', value);
 			dispatch('FETCH_SPECIFIC_INTERVIEWS', { tag: value });
 		},
 	},
