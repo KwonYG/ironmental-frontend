@@ -63,9 +63,9 @@ export const interviewModule = {
 			});
 		},
 
-		FETCH_SPECIFIC_INTERVIEWS({ commit }, { tag }) {
+		FETCH_SPECIFIC_INTERVIEWS({ commit }, { tag, searchWord }) {
 			return interview
-				.fetchSpecificInterviews(tag)
+				.fetchSpecificInterviews(tag, searchWord)
 				.then(({ data }) => {
 					commit('SET_INTERVIEWS', data);
 				})

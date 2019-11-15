@@ -34,9 +34,9 @@ export const tagModule = {
 				});
 		},
 
-		UPDATE_SELECTED_TAG({ commit, dispatch }, { value }) {
+		UPDATE_SELECTED_TAG({ commit, dispatch }, { value, searchWord }) {
 			commit('UPDATE_SELECTED_TAG', value);
-			dispatch('FETCH_SPECIFIC_INTERVIEWS', { tag: value });
+			dispatch('FETCH_SPECIFIC_INTERVIEWS', { tag: value, searchWord });
 		},
 	},
 };
